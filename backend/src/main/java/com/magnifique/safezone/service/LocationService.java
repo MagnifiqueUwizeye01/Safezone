@@ -17,27 +17,37 @@ public class LocationService {
     public String saveParent(Location location) {
         if (!locationRepository.existsByCode(location.getCode())) {
             locationRepository.save(location);
-            return "Parent saved successfully";
+            return "saved successfully";
+        } else {
+            return "exists";
         }
-        return "Location with this code already exists";
     }
     
     public String saveChild(String parentCode, Location location) {
         if (parentCode != null) {
-            Optional<Location> parent = locationRepository.findByCode(parentCode);
+            Optional<Location> getParent = locationRepository.findByCode(parentCode);
             
-            if (parent.isPresent()) {
-                location.setParent(parent.get());
+            if (getParent.isPresent()) {
+                //bind the parent to child
+                location.setParent(getParent.get());
                 
                 if (!locationRepository.existsByCode(location.getCode())) {
                     locationRepository.save(location);
-                    return "Child saved successfully";
+                    return "child is saved successfully";
+                } else {
+                    return "child with this code exists";
                 }
-                return "Child with this code already exists";
+            } else {
+                return "The parent with this code does not exist";
             }
-            return "Parent with this code does not exist";
+        } else {
+            if (!locationRepository.existsByCode(location.getCode())) {
+                locationRepository.save(location);
+                return "parent is saved successfully";
+            } else {
+                return "parent exists";
+            }
         }
-        return saveParent(location);
     }
     
     public Optional<Location> getLocationByCode(String code) {
