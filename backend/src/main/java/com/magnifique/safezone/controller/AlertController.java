@@ -1,0 +1,75 @@
+package com.magnifique.safezone.controller;
+
+import com.magnifique.safezone.model.Alert;
+import com.magnifique.safezone.service.AlertService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
+@RestController
+@RequestMapping("/api/alerts")
+public class AlertController {
+
+    @Autowired
+    private AlertService alertService;
+
+    // CREATE
+    @PostMapping
+    public Alert createAlert(@RequestBody Alert alert) {
+        return alertService.saveAlert(alert);
+    }
+
+    // READ - Get all
+    @GetMapping
+    public List<Alert> getAllAlerts() {
+        return alertService.getAllAlerts();
+    }
+
+    // READ - Get by ID
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getAlertById(@PathVariable UUID id) {
+        Optional<Alert> alertOpt = alertService.getAlertById(id);
+        if (alertOpt.isPresent()) {
+            return new ResponseEntity<>(alertOpt.get(), HttpStatus.OK);
+        }
+        return new ResponseEntity<>("Alert not found", HttpStatus.NOT_FOUND);
+    }
+
+    // UPDATE
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateAlert(@PathVariable UUID id, @RequestBody Alert alert) {
+        String result = alertService.updateAlert(id, alert);
+        if (result.contains("successfully")) {
+            return new ResponseEntity<>(result, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(result, HttpStatus.NOT_FOUND);
+    }
+
+    // DELETE
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteAlert(@PathVariable UUID id) {
+        String result = alertService.deleteAlert(id);
+        if (result.contains("successfully")) {
+            return new ResponseEntity<>(result, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(result, HttpStatus.NOT_FOUND);
+    }
+
+    // Get by type with pagination
+    @GetMapping("/type/{type}/paginated")
+    public Page<Alert> getAlertsByTypePaginated(
+            @PathVariable String type,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return alertService.getAlertsByType(type, pageable);
+    }
+}

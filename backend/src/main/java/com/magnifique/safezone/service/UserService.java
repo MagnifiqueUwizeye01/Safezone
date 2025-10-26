@@ -1,0 +1,77 @@
+package com.magnifique.safezone.service;
+
+import com.magnifique.safezone.model.User;
+import com.magnifique.safezone.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
+@Service
+public class UserService {
+    
+    @Autowired
+    private UserRepository userRepository;
+    
+    public String saveUser(User user) {
+        if (userRepository.existsByUsername(user.getUsername())) {
+            return "Username already exists";
+        }
+        if (userRepository.existsByEmail(user.getEmail())) {
+            return "Email already exists";
+        }
+        userRepository.save(user);
+        return "User saved successfully";
+    }
+    
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
+    
+    public Optional<User> getUserById(UUID id) {
+        return userRepository.findById(id);
+    }
+    
+    public String updateUser(UUID id, User user) {
+        Optional<User> existingUser = userRepository.findById(id);
+        if (existingUser.isPresent()) {
+            user.setId(id);
+            userRepository.save(user);
+            return "User updated successfully";
+        }
+        return "User not found";
+    }
+    
+    public String deleteUser(UUID id) {
+        if (userRepository.existsById(id)) {
+            userRepository.deleteById(id);
+            return "User deleted successfully";
+        }
+        return "User not found";
+    }
+    
+    // Get users by role with sorting
+    public List<User> getUsersByRole(String role) {
+        return userRepository.findByRole(role, Sort.by("username"));
+    }
+    
+    // Get users by role with pagination
+    public Page<User> getUsersByRole(String role, Pageable pageable) {
+        return userRepository.findByRole(role, pageable);
+    }
+    
+    // Get users by province code
+    public List<User> getUsersByProvinceCode(String provinceCode) {
+        return userRepository.findByProvinceCode(provinceCode);
+    }
+    
+    // Get users by province name
+    public List<User> getUsersByProvinceName(String provinceName) {
+        return userRepository.findByProvinceName(provinceName);
+    }
+}
