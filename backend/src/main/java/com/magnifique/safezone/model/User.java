@@ -35,6 +35,9 @@ public class User {
     @ManyToOne
     @JoinColumn(name = "location_id")
     private Location location;
+    
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private UserProfile profile;
 
     public User() {
         this.createdAt = LocalDateTime.now();
@@ -72,6 +75,9 @@ public class User {
 
     public Location getLocation() { return location; }
     public void setLocation(Location location) { this.location = location; }
+    
+    public UserProfile getProfile() { return profile; }
+    public void setProfile(UserProfile profile) { this.profile = profile; }
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;

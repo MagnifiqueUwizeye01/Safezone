@@ -1,13 +1,14 @@
 package com.magnifique.safezone.controller;
 
-import com.magnifique.safezone.service.*;
-import com.magnifique.safezone.model.*;
-import com.magnifique.safezone.enums.*;
+import com.magnifique.safezone.service.UserService;
+import com.magnifique.safezone.model.User;
+import com.magnifique.safezone.enums.EUserRole;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,13 +34,12 @@ public class UserController {
         return new ResponseEntity<>(result, HttpStatus.CONFLICT);
     }
 
-    // READ - Get all
+    // READ
     @GetMapping(value = "/all")
     public ResponseEntity<?> getAllUser() {
         return new ResponseEntity<>(userService.getAllUser(), HttpStatus.OK);
     }
 
-    // READ - Get by ID
     @GetMapping("/{id}")
     public ResponseEntity<?> getUserById(@PathVariable UUID id) {
         Optional<User> userOpt = userService.getUserById(id);
@@ -71,19 +71,28 @@ public class UserController {
 
     // Get users by role (with sorting)
     @GetMapping("/role/{role}")
-    public List<User> getUsersByRole(@PathVariable String role) {
+    public List<User> getUsersByRole(
+            @PathVariable String role,
+            @RequestParam(defaultValue = "username") String sortBy,
+            @RequestParam(defaultValue = "ASC") String direction) {
         EUserRole userRole = EUserRole.valueOf(role.toUpperCase());
-        return userService.getUsersByRole(userRole);
+        Sort.Direction sortDirection = direction.equalsIgnoreCase("DESC") ? Sort.Direction.DESC : Sort.Direction.ASC;
+        Sort sort = Sort.by(sortDirection, sortBy);
+        return userService.getUsersByRole(userRole, sort);
     }
 
-    // Get users by role (with pagination)
+    // Get users by role (with pagination and sorting)
     @GetMapping("/role/{role}/paginated")
     public Page<User> getUsersByRolePaginated(
             @PathVariable String role,
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size) {
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "username") String sortBy,
+            @RequestParam(defaultValue = "ASC") String direction) {
         EUserRole userRole = EUserRole.valueOf(role.toUpperCase());
-        Pageable pageable = PageRequest.of(page, size);
+        Sort.Direction sortDirection = direction.equalsIgnoreCase("DESC") ? Sort.Direction.DESC : Sort.Direction.ASC;
+        Sort sort = Sort.by(sortDirection, sortBy);
+        Pageable pageable = PageRequest.of(page, size, sort);
         return userService.getUsersByRole(userRole, pageable);
     }
 
@@ -97,5 +106,15 @@ public class UserController {
     @GetMapping("/province/name/{name}")
     public List<User> getUsersByProvinceName(@PathVariable String name) {
         return userService.getUsersByProvinceName(name);
+    }
+
+    // Get users by location ID
+    @GetMapping("/location/{locationId}")
+    public ResponseEntity<?> getUsersByLocationId(@PathVariable UUID locationId) {
+        List<User> users = userService.getUsersByLocationId(locationId);
+        if (users.isEmpty()) {
+            return new ResponseEntity<>("No users found in that location", HttpStatus.OK);
+        }
+        return new ResponseEntity<>(users, HttpStatus.OK);
     }
 }

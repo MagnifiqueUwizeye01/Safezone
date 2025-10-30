@@ -7,10 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -59,13 +61,28 @@ public class ReportController {
         return new ResponseEntity<>(result, HttpStatus.NOT_FOUND);
     }
 
+    @GetMapping("/status/{status}")
+    public List<Report> getReportsByStatus(
+            @PathVariable String status,
+            @RequestParam(defaultValue = "title") String sortBy,
+            @RequestParam(defaultValue = "ASC") String direction) {
+        EReportStatus reportStatus = EReportStatus.valueOf(status.toUpperCase());
+        Sort.Direction sortDirection = direction.equalsIgnoreCase("DESC") ? Sort.Direction.DESC : Sort.Direction.ASC;
+        Sort sort = Sort.by(sortDirection, sortBy);
+        return reportService.getReportsByStatus(reportStatus, sort);
+    }
+
     @GetMapping("/status/{status}/paginated")
     public Page<Report> getReportsByStatusPaginated(
             @PathVariable String status,
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size) {
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "title") String sortBy,
+            @RequestParam(defaultValue = "ASC") String direction) {
         EReportStatus reportStatus = EReportStatus.valueOf(status.toUpperCase());
-        Pageable pageable = PageRequest.of(page, size);
+        Sort.Direction sortDirection = direction.equalsIgnoreCase("DESC") ? Sort.Direction.DESC : Sort.Direction.ASC;
+        Sort sort = Sort.by(sortDirection, sortBy);
+        Pageable pageable = PageRequest.of(page, size, sort);
         return reportService.getReportsByStatus(reportStatus, pageable);
     }
 }

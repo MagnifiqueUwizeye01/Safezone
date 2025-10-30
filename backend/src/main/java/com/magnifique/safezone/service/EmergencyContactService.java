@@ -89,8 +89,8 @@ public class EmergencyContactService {
         return "Emergency contact not found";
     }
     
-    public List<EmergencyContact> getEmergencyContactsByDepartment(String department) {
-        return emergencyContactRepository.findByDepartment(department, Sort.by("name"));
+    public List<EmergencyContact> getEmergencyContactsByDepartment(String department, Sort sort) {
+        return emergencyContactRepository.findByDepartment(department, sort);
     }
     
     public Page<EmergencyContact> getEmergencyContactsByDepartment(String department, Pageable pageable) {

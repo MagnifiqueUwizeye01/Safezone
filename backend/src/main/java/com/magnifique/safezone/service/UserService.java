@@ -60,8 +60,8 @@ public class UserService {
         return "User not found";
     }
     
-    public List<User> getUsersByRole(EUserRole role) {
-        return userRepository.findByRole(role, Sort.by("username"));
+    public List<User> getUsersByRole(EUserRole role, Sort sort) {
+        return userRepository.findByRole(role, sort);
     }
     
     public Page<User> getUsersByRole(EUserRole role, Pageable pageable) {
@@ -74,5 +74,9 @@ public class UserService {
     
     public List<User> getUsersByProvinceName(String provinceName) {
         return userRepository.findByProvinceName(provinceName);
+    }
+    
+    public List<User> getUsersByLocationId(UUID locationId) {
+        return userRepository.findByLocationId(locationId);
     }
 }

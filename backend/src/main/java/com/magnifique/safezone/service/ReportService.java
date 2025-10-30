@@ -103,8 +103,8 @@ public class ReportService {
         return "Report not found";
     }
     
-    public List<Report> getReportsByStatus(EReportStatus status) {
-        return reportRepository.findByStatus(status, Sort.by("title"));
+    public List<Report> getReportsByStatus(EReportStatus status, Sort sort) {
+        return reportRepository.findByStatus(status, sort);
     }
     
     public Page<Report> getReportsByStatus(EReportStatus status, Pageable pageable) {

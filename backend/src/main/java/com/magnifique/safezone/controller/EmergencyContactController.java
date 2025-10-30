@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -64,16 +65,25 @@ public class EmergencyContactController {
     }
 
     @GetMapping("/department/{department}")
-    public List<EmergencyContact> getEmergencyContactsByDepartment(@PathVariable String department) {
-        return emergencyContactService.getEmergencyContactsByDepartment(department);
+    public List<EmergencyContact> getEmergencyContactsByDepartment(
+            @PathVariable String department,
+            @RequestParam(defaultValue = "name") String sortBy,
+            @RequestParam(defaultValue = "ASC") String direction) {
+        Sort.Direction sortDirection = direction.equalsIgnoreCase("DESC") ? Sort.Direction.DESC : Sort.Direction.ASC;
+        Sort sort = Sort.by(sortDirection, sortBy);
+        return emergencyContactService.getEmergencyContactsByDepartment(department, sort);
     }
 
     @GetMapping("/department/{department}/paginated")
     public Page<EmergencyContact> getEmergencyContactsByDepartmentPaginated(
             @PathVariable String department,
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size) {
-        Pageable pageable = PageRequest.of(page, size);
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "name") String sortBy,
+            @RequestParam(defaultValue = "ASC") String direction) {
+        Sort.Direction sortDirection = direction.equalsIgnoreCase("DESC") ? Sort.Direction.DESC : Sort.Direction.ASC;
+        Sort sort = Sort.by(sortDirection, sortBy);
+        Pageable pageable = PageRequest.of(page, size, sort);
         return emergencyContactService.getEmergencyContactsByDepartment(department, pageable);
     }
 
