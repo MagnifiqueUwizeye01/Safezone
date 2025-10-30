@@ -60,6 +60,6 @@ The system includes 6 core entities with Rwandan location hierarchy support.
 
 ---
 
-**Student**: Magnifique  
+  
 **Course**: Web Technology  
-**Institution**: AUCA
+
