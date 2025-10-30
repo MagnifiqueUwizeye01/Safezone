@@ -27,7 +27,10 @@ safezone/
 
 ## Database Schema
 
-![ER Diagram](https://github.com/user-attachments/assets/4027c998-2693-463d-863c-cce5a0e4854e)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/4027c998-2693-463d-863c-cce5a0e4854e" alt="ER Diagram" width="1000">
+</p>
+
 
 
 The system includes 6 core entities with Rwandan location hierarchy support.
