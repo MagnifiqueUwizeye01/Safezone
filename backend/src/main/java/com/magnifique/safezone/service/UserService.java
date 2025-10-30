@@ -56,22 +56,18 @@ public class UserService {
         return "User not found";
     }
     
-    // Get users by role with sorting
     public List<User> getUsersByRole(EUserRole role) {
         return userRepository.findByRole(role, Sort.by("username"));
     }
     
-    // Get users by role with pagination
     public Page<User> getUsersByRole(EUserRole role, Pageable pageable) {
         return userRepository.findByRole(role, pageable);
     }
     
-    // Get users by province code
     public List<User> getUsersByProvinceCode(String provinceCode) {
         return userRepository.findByProvinceCode(provinceCode);
     }
     
-    // Get users by province name
     public List<User> getUsersByProvinceName(String provinceName) {
         return userRepository.findByProvinceName(provinceName);
     }

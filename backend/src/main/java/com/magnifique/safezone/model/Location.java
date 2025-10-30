@@ -26,7 +26,6 @@ public class Location {
     @JoinColumn(name = "parent_id")
     private Location parent;
 
-    // Constructors
     public Location() {
     }
 

@@ -21,7 +21,7 @@ public class EmergencyContact {
     private String email;
     
     @Column(name = "department")
-    private String department; // Police, Fire, Medical, etc.
+    private String department;
     
     @ManyToOne
     @JoinColumn(name = "location_id")
@@ -30,7 +30,6 @@ public class EmergencyContact {
     @Column(name = "is_active")
     private Boolean isActive = true;
 
-    // Constructors
     public EmergencyContact() {
     }
 
@@ -41,8 +40,6 @@ public class EmergencyContact {
         this.department = department;
         this.location = location;
     }
-    
-    // Getters and Setters
     public UUID getId() {
         return id;
     }

@@ -21,20 +21,17 @@ public class AlertController {
     @Autowired
     private AlertService alertService;
 
-    // CREATE
     @PostMapping
     public ResponseEntity<String> createAlert(@RequestBody Alert alert) {
         alertService.saveAlert(alert);
         return new ResponseEntity<>("Alert sent successfully", HttpStatus.CREATED);
     }
 
-    // READ - Get all
     @GetMapping(value = "/all")
     public ResponseEntity<?> getAllAlert() {
         return new ResponseEntity<>(alertService.getAllAlert(), HttpStatus.OK);
     }
 
-    // READ - Get by ID
     @GetMapping("/{id}")
     public ResponseEntity<?> getAlertById(@PathVariable UUID id) {
         Optional<Alert> alertOpt = alertService.getAlertById(id);
@@ -44,7 +41,6 @@ public class AlertController {
         return new ResponseEntity<>("Alert not found", HttpStatus.NOT_FOUND);
     }
 
-    // UPDATE
     @PutMapping("/{id}")
     public ResponseEntity<String> updateAlert(@PathVariable UUID id, @RequestBody Alert alert) {
         String result = alertService.updateAlert(id, alert);
@@ -54,7 +50,6 @@ public class AlertController {
         return new ResponseEntity<>(result, HttpStatus.NOT_FOUND);
     }
 
-    // DELETE
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteAlert(@PathVariable UUID id) {
         String result = alertService.deleteAlert(id);
@@ -64,7 +59,6 @@ public class AlertController {
         return new ResponseEntity<>(result, HttpStatus.NOT_FOUND);
     }
 
-    // Get by type with pagination
     @GetMapping("/type/{type}/paginated")
     public Page<Alert> getAlertsByTypePaginated(
             @PathVariable String type,

@@ -25,12 +25,10 @@ public class Alert {
     @Enumerated(EnumType.STRING)
     private EAlertType alertType;
 
-    // Location where the alert is relevant
     @ManyToOne
     @JoinColumn(name = "location_id")
     private Location location;
 
-    // Many-to-Many: Many users receive many alerts
     @ManyToMany
     @JoinTable(
         name = "user_alerts",
@@ -39,7 +37,6 @@ public class Alert {
     )
     private Set<User> recipients = new HashSet<>();
 
-    // Constructors
     public Alert() {
         this.createdAt = LocalDateTime.now();
     }

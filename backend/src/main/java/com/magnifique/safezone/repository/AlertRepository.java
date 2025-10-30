@@ -16,16 +16,11 @@ import java.util.UUID;
 @Repository
 public interface AlertRepository extends JpaRepository<Alert, UUID> {
     
-    // Find by alert type with pagination
     Page<Alert> findByAlertType(EAlertType alertType, Pageable pageable);
-    
-    // Find by alert type
     List<Alert> findByAlertType(EAlertType alertType);
     
-    // Find alerts by date range
     @Query("SELECT a FROM Alert a WHERE a.createdAt BETWEEN :startDate AND :endDate")
     List<Alert> findByDateRange(@Param("startDate") LocalDateTime startDate, @Param("endDate") LocalDateTime endDate);
     
-    // Find all with pagination
     Page<Alert> findAll(Pageable pageable);
 }

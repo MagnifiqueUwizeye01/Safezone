@@ -49,13 +49,11 @@ public class LocationController {
         }
     }
 
-    // READ - Get all provinces
     @GetMapping("/provinces")
     public List<Location> getAllProvinces() {
         return locationService.getAllProvinces();
     }
 
-    // READ - Get location by code
     @GetMapping("/code/{code}")
     public ResponseEntity<?> getLocationByCode(@PathVariable String code) {
         Optional<Location> locationOpt = locationService.getLocationByCode(code);
@@ -65,7 +63,6 @@ public class LocationController {
         return new ResponseEntity<>("Location not found", HttpStatus.NOT_FOUND);
     }
 
-    // READ - Get children by parent code
     @GetMapping("/parent/{parentCode}")
     public List<Location> getChildrenByParentCode(@PathVariable String parentCode) {
         return locationService.getChildrenByParentCode(parentCode);

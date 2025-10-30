@@ -36,7 +36,6 @@ public class Report {
     @JoinColumn(name = "location_id")
     private Location location;
 
-    // Constructors
     public Report() {
         this.createdAt = LocalDateTime.now();
         this.status = EReportStatus.PENDING;

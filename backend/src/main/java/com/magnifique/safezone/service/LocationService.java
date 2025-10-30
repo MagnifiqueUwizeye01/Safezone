@@ -28,7 +28,6 @@ public class LocationService {
             Optional<Location> getParent = locationRepository.findByCode(parentCode);
             
             if (getParent.isPresent()) {
-                //bind the parent to child
                 location.setParent(getParent.get());
                 
                 if (!locationRepository.existsByCode(location.getCode())) {

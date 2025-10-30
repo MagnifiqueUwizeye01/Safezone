@@ -21,20 +21,17 @@ public class ReportController {
     @Autowired
     private ReportService reportService;
 
-    // CREATE
     @PostMapping
     public ResponseEntity<String> createReport(@RequestBody Report report) {
         reportService.saveReport(report);
         return new ResponseEntity<>("Report sent successfully", HttpStatus.CREATED);
     }
 
-    // READ - Get all
     @GetMapping(value = "/all")
     public ResponseEntity<?> getAllReport() {
         return new ResponseEntity<>(reportService.getAllReport(), HttpStatus.OK);
     }
 
-    // READ - Get by ID
     @GetMapping("/{id}")
     public ResponseEntity<?> getReportById(@PathVariable UUID id) {
         Optional<Report> reportOpt = reportService.getReportById(id);
@@ -44,7 +41,6 @@ public class ReportController {
         return new ResponseEntity<>("Report not found", HttpStatus.NOT_FOUND);
     }
 
-    // UPDATE
     @PutMapping("/{id}")
     public ResponseEntity<String> updateReport(@PathVariable UUID id, @RequestBody Report report) {
         String result = reportService.updateReport(id, report);
@@ -54,7 +50,6 @@ public class ReportController {
         return new ResponseEntity<>(result, HttpStatus.NOT_FOUND);
     }
 
-    // DELETE
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteReport(@PathVariable UUID id) {
         String result = reportService.deleteReport(id);
@@ -64,7 +59,6 @@ public class ReportController {
         return new ResponseEntity<>(result, HttpStatus.NOT_FOUND);
     }
 
-    // Get by status with pagination
     @GetMapping("/status/{status}/paginated")
     public Page<Report> getReportsByStatusPaginated(
             @PathVariable String status,

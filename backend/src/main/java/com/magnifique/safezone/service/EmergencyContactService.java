@@ -31,7 +31,6 @@ public class EmergencyContactService {
             return "Email already exists";
         }
         
-        // Load Location entity
         if (emergencyContact.getLocation() != null && emergencyContact.getLocation().getId() != null) {
             Optional<Location> location = locationRepository.findById(emergencyContact.getLocation().getId());
             location.ifPresent(emergencyContact::setLocation);
@@ -67,32 +66,26 @@ public class EmergencyContactService {
         return "Emergency contact not found";
     }
     
-    // Get emergency contacts by department
     public List<EmergencyContact> getEmergencyContactsByDepartment(String department) {
         return emergencyContactRepository.findByDepartment(department, Sort.by("name"));
     }
     
-    // Get emergency contacts by department with pagination
     public Page<EmergencyContact> getEmergencyContactsByDepartment(String department, Pageable pageable) {
         return emergencyContactRepository.findByDepartment(department, pageable);
     }
     
-    // Get emergency contacts by location
     public List<EmergencyContact> getEmergencyContactsByLocation(UUID locationId) {
         return emergencyContactRepository.findByLocationId(locationId);
     }
     
-    // Get active emergency contacts
     public List<EmergencyContact> getActiveEmergencyContacts() {
         return emergencyContactRepository.findByIsActive(true);
     }
     
-    // Get active emergency contacts with pagination
     public Page<EmergencyContact> getActiveEmergencyContacts(Pageable pageable) {
         return emergencyContactRepository.findByIsActive(true, pageable);
     }
     
-    // Get emergency contacts by location and department
     public List<EmergencyContact> getEmergencyContactsByLocationAndDepartment(UUID locationId, String department) {
         return emergencyContactRepository.findByLocationAndDepartment(locationId, department);
     }

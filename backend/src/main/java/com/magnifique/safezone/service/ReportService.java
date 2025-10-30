@@ -30,7 +30,6 @@ public class ReportService {
     private LocationRepository locationRepository;
     
     public Report saveReport(Report report) {
-        // Load User and Location entities
         if (report.getReporter() != null && report.getReporter().getId() != null) {
             Optional<User> user = userRepository.findById(report.getReporter().getId());
             user.ifPresent(report::setReporter);

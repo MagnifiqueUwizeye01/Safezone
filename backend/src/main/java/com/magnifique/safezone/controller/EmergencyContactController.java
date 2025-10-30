@@ -22,7 +22,6 @@ public class EmergencyContactController {
     @Autowired
     private EmergencyContactService emergencyContactService;
 
-    // CREATE
     @PostMapping(value = "/create")
     public ResponseEntity<?> createEmergencyContact(@RequestBody EmergencyContact emergencyContact) {
         String result = emergencyContactService.saveEmergencyContact(emergencyContact);
@@ -32,13 +31,11 @@ public class EmergencyContactController {
         return new ResponseEntity<>(result, HttpStatus.CONFLICT);
     }
 
-    // READ - Get all
     @GetMapping(value = "/all")
     public ResponseEntity<?> getAllEmergencyContact() {
         return new ResponseEntity<>(emergencyContactService.getAllEmergencyContact(), HttpStatus.OK);
     }
 
-    // READ - Get by ID
     @GetMapping("/{id}")
     public ResponseEntity<?> getEmergencyContactById(@PathVariable UUID id) {
         Optional<EmergencyContact> contactOpt = emergencyContactService.getEmergencyContactById(id);
@@ -48,7 +45,6 @@ public class EmergencyContactController {
         return new ResponseEntity<>("Emergency contact not found", HttpStatus.NOT_FOUND);
     }
 
-    // UPDATE
     @PutMapping("/{id}")
     public ResponseEntity<?> updateEmergencyContact(@PathVariable UUID id, @RequestBody EmergencyContact emergencyContact) {
         String result = emergencyContactService.updateEmergencyContact(id, emergencyContact);
@@ -58,7 +54,6 @@ public class EmergencyContactController {
         return new ResponseEntity<>(result, HttpStatus.NOT_FOUND);
     }
 
-    // DELETE
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteEmergencyContact(@PathVariable UUID id) {
         String result = emergencyContactService.deleteEmergencyContact(id);
@@ -68,13 +63,11 @@ public class EmergencyContactController {
         return new ResponseEntity<>(result, HttpStatus.NOT_FOUND);
     }
 
-    // Get emergency contacts by department
     @GetMapping("/department/{department}")
     public List<EmergencyContact> getEmergencyContactsByDepartment(@PathVariable String department) {
         return emergencyContactService.getEmergencyContactsByDepartment(department);
     }
 
-    // Get emergency contacts by department with pagination
     @GetMapping("/department/{department}/paginated")
     public Page<EmergencyContact> getEmergencyContactsByDepartmentPaginated(
             @PathVariable String department,
@@ -84,19 +77,16 @@ public class EmergencyContactController {
         return emergencyContactService.getEmergencyContactsByDepartment(department, pageable);
     }
 
-    // Get emergency contacts by location
     @GetMapping("/location/{locationId}")
     public List<EmergencyContact> getEmergencyContactsByLocation(@PathVariable UUID locationId) {
         return emergencyContactService.getEmergencyContactsByLocation(locationId);
     }
 
-    // Get active emergency contacts
     @GetMapping("/active")
     public List<EmergencyContact> getActiveEmergencyContacts() {
         return emergencyContactService.getActiveEmergencyContacts();
     }
 
-    // Get active emergency contacts with pagination
     @GetMapping("/active/paginated")
     public Page<EmergencyContact> getActiveEmergencyContactsPaginated(
             @RequestParam(defaultValue = "0") int page,
@@ -105,7 +95,6 @@ public class EmergencyContactController {
         return emergencyContactService.getActiveEmergencyContacts(pageable);
     }
 
-    // Get emergency contacts by location and department
     @GetMapping("/location/{locationId}/department/{department}")
     public List<EmergencyContact> getEmergencyContactsByLocationAndDepartment(
             @PathVariable UUID locationId, 

@@ -19,7 +19,7 @@ public class Notification {
     private String message;
     
     @Column(name = "type")
-    private String type; // REPORT, ALERT, SYSTEM, EMERGENCY
+    private String type;
     
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -28,7 +28,6 @@ public class Notification {
     @Column(name = "is_read")
     private Boolean isRead = false;
 
-    // Constructors
     public Notification() {
         this.createdAt = LocalDateTime.now();
     }
@@ -40,8 +39,6 @@ public class Notification {
         this.type = type;
         this.user = user;
     }
-    
-    // Getters and Setters
     public UUID getId() {
         return id;
     }

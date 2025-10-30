@@ -34,9 +34,8 @@ public class User {
 
     @ManyToOne
     @JoinColumn(name = "location_id")
-    private Location location; // User's location
+    private Location location;
 
-    // Constructors
     public User() {
         this.createdAt = LocalDateTime.now();
     }
@@ -50,8 +49,6 @@ public class User {
         this.password = password;
         this.role = role;
     }
-
-    // Getters and Setters
     public UUID getId() { return id; }
     public void setId(UUID id) { this.id = id; }
 
