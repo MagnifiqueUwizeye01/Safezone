@@ -1,6 +1,7 @@
 package com.magnifique.safezone.service;
 
 import com.magnifique.safezone.enums.EUserRole;
+import com.magnifique.safezone.model.Location;
 import com.magnifique.safezone.model.User;
 import com.magnifique.safezone.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,5 +79,13 @@ public class UserService {
     
     public List<User> getUsersByLocationId(UUID locationId) {
         return userRepository.findByLocationId(locationId);
+    }
+
+    public Page<User> getUsersByLocationId(UUID locationId, Pageable pageable) {
+        return userRepository.findByLocationId(locationId, pageable);
+    }
+
+    public Optional<Location> getProvinceByUserId(UUID userId) {
+        return userRepository.findProvinceByUserId(userId);
     }
 }
