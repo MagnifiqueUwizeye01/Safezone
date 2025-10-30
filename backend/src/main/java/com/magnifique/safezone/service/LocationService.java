@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class LocationService {
@@ -59,5 +60,35 @@ public class LocationService {
     
     public List<Location> getChildrenByParentCode(String parentCode) {
         return locationRepository.findByParentCode(parentCode);
+    }
+    
+    public List<Location> getAllLocations() {
+        return locationRepository.findAll();
+    }
+    
+    public Optional<Location> getLocationById(UUID id) {
+        return locationRepository.findById(id);
+    }
+    
+    public String updateLocation(UUID id, Location location) {
+        Optional<Location> existingLocation = locationRepository.findById(id);
+        if (existingLocation.isPresent()) {
+            location.setId(id);
+            locationRepository.save(location);
+            return "Location updated successfully";
+        }
+        return "Location not found";
+    }
+    
+    public String deleteLocation(UUID id) {
+        if (locationRepository.existsById(id)) {
+            try {
+                locationRepository.deleteById(id);
+                return "Location deleted successfully";
+            } catch (Exception e) {
+                return "Cannot delete location: " + e.getMessage();
+            }
+        }
+        return "Location not found";
     }
 }

@@ -33,7 +33,10 @@ public class AlertService {
     public Alert saveAlert(Alert alert) {
         if (alert.getLocation() != null && alert.getLocation().getId() != null) {
             Optional<Location> locOpt = locationRepository.findById(alert.getLocation().getId());
-            locOpt.ifPresent(alert::setLocation);
+            if (locOpt.isEmpty()) {
+                throw new RuntimeException("Location not found with ID: " + alert.getLocation().getId());
+            }
+            alert.setLocation(locOpt.get());
         }
 
         if ((alert.getRecipients() == null || alert.getRecipients().isEmpty()) && alert.getLocation() != null) {
@@ -58,13 +61,20 @@ public class AlertService {
             for (User user : alert.getRecipients()) {
                 if (user.getId() != null) {
                     Optional<User> loadedUser = userRepository.findById(user.getId());
-                    loadedUser.ifPresent(loadedRecipients::add);
+                    if (loadedUser.isEmpty()) {
+                        throw new RuntimeException("User not found with ID: " + user.getId());
+                    }
+                    loadedRecipients.add(loadedUser.get());
                 }
             }
             alert.setRecipients(loadedRecipients);
         }
 
-        return alertRepository.save(alert);
+        try {
+            return alertRepository.save(alert);
+        } catch (Exception e) {
+            throw new RuntimeException("Error saving alert: " + e.getMessage());
+        }
     }
     
     public List<Alert> getAllAlert() {
@@ -78,17 +88,47 @@ public class AlertService {
     public String updateAlert(UUID id, Alert alert) {
         Optional<Alert> existingAlert = alertRepository.findById(id);
         if (existingAlert.isPresent()) {
-            alert.setId(id);
-            alertRepository.save(alert);
-            return "Alert updated successfully";
+            try {
+                if (alert.getLocation() != null && alert.getLocation().getId() != null) {
+                    Optional<Location> locOpt = locationRepository.findById(alert.getLocation().getId());
+                    if (locOpt.isEmpty()) {
+                        return "Location not found with ID: " + alert.getLocation().getId();
+                    }
+                    alert.setLocation(locOpt.get());
+                }
+                
+                if (alert.getRecipients() != null && !alert.getRecipients().isEmpty()) {
+                    Set<User> loadedRecipients = new HashSet<>();
+                    for (User user : alert.getRecipients()) {
+                        if (user.getId() != null) {
+                            Optional<User> loadedUser = userRepository.findById(user.getId());
+                            if (loadedUser.isEmpty()) {
+                                return "User not found with ID: " + user.getId();
+                            }
+                            loadedRecipients.add(loadedUser.get());
+                        }
+                    }
+                    alert.setRecipients(loadedRecipients);
+                }
+                
+                alert.setId(id);
+                alertRepository.save(alert);
+                return "Alert updated successfully";
+            } catch (Exception e) {
+                return "Error updating alert: " + e.getMessage();
+            }
         }
         return "Alert not found";
     }
     
     public String deleteAlert(UUID id) {
         if (alertRepository.existsById(id)) {
-            alertRepository.deleteById(id);
-            return "Alert deleted successfully";
+            try {
+                alertRepository.deleteById(id);
+                return "Alert deleted successfully";
+            } catch (Exception e) {
+                return "Cannot delete alert: " + e.getMessage();
+            }
         }
         return "Alert not found";
     }

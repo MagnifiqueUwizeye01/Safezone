@@ -26,10 +26,17 @@ public class NotificationService {
     public Notification saveNotification(Notification notification) {
         if (notification.getUser() != null && notification.getUser().getId() != null) {
             Optional<User> user = userRepository.findById(notification.getUser().getId());
-            user.ifPresent(notification::setUser);
+            if (user.isEmpty()) {
+                throw new RuntimeException("User not found with ID: " + notification.getUser().getId());
+            }
+            notification.setUser(user.get());
         }
         
-        return notificationRepository.save(notification);
+        try {
+            return notificationRepository.save(notification);
+        } catch (Exception e) {
+            throw new RuntimeException("Error saving notification: " + e.getMessage());
+        }
     }
     
     public List<Notification> getAllNotification() {
@@ -43,17 +50,33 @@ public class NotificationService {
     public String updateNotification(UUID id, Notification notification) {
         Optional<Notification> existingNotification = notificationRepository.findById(id);
         if (existingNotification.isPresent()) {
-            notification.setId(id);
-            notificationRepository.save(notification);
-            return "Notification updated successfully";
+            try {
+                if (notification.getUser() != null && notification.getUser().getId() != null) {
+                    Optional<User> user = userRepository.findById(notification.getUser().getId());
+                    if (user.isEmpty()) {
+                        return "User not found with ID: " + notification.getUser().getId();
+                    }
+                    notification.setUser(user.get());
+                }
+                
+                notification.setId(id);
+                notificationRepository.save(notification);
+                return "Notification updated successfully";
+            } catch (Exception e) {
+                return "Error updating notification: " + e.getMessage();
+            }
         }
         return "Notification not found";
     }
     
     public String deleteNotification(UUID id) {
         if (notificationRepository.existsById(id)) {
-            notificationRepository.deleteById(id);
-            return "Notification deleted successfully";
+            try {
+                notificationRepository.deleteById(id);
+                return "Notification deleted successfully";
+            } catch (Exception e) {
+                return "Cannot delete notification: " + e.getMessage();
+            }
         }
         return "Notification not found";
     }

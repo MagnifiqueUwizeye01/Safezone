@@ -33,11 +33,18 @@ public class EmergencyContactService {
         
         if (emergencyContact.getLocation() != null && emergencyContact.getLocation().getId() != null) {
             Optional<Location> location = locationRepository.findById(emergencyContact.getLocation().getId());
-            location.ifPresent(emergencyContact::setLocation);
+            if (location.isEmpty()) {
+                return "Location not found with ID: " + emergencyContact.getLocation().getId();
+            }
+            emergencyContact.setLocation(location.get());
         }
         
-        emergencyContactRepository.save(emergencyContact);
-        return "Emergency contact saved successfully";
+        try {
+            emergencyContactRepository.save(emergencyContact);
+            return "Emergency contact saved successfully";
+        } catch (Exception e) {
+            return "Error saving emergency contact: " + e.getMessage();
+        }
     }
     
     public List<EmergencyContact> getAllEmergencyContact() {
@@ -51,17 +58,33 @@ public class EmergencyContactService {
     public String updateEmergencyContact(UUID id, EmergencyContact emergencyContact) {
         Optional<EmergencyContact> existingContact = emergencyContactRepository.findById(id);
         if (existingContact.isPresent()) {
-            emergencyContact.setId(id);
-            emergencyContactRepository.save(emergencyContact);
-            return "Emergency contact updated successfully";
+            try {
+                if (emergencyContact.getLocation() != null && emergencyContact.getLocation().getId() != null) {
+                    Optional<Location> location = locationRepository.findById(emergencyContact.getLocation().getId());
+                    if (location.isEmpty()) {
+                        return "Location not found with ID: " + emergencyContact.getLocation().getId();
+                    }
+                    emergencyContact.setLocation(location.get());
+                }
+                
+                emergencyContact.setId(id);
+                emergencyContactRepository.save(emergencyContact);
+                return "Emergency contact updated successfully";
+            } catch (Exception e) {
+                return "Error updating emergency contact: " + e.getMessage();
+            }
         }
         return "Emergency contact not found";
     }
     
     public String deleteEmergencyContact(UUID id) {
         if (emergencyContactRepository.existsById(id)) {
-            emergencyContactRepository.deleteById(id);
-            return "Emergency contact deleted successfully";
+            try {
+                emergencyContactRepository.deleteById(id);
+                return "Emergency contact deleted successfully";
+            } catch (Exception e) {
+                return "Cannot delete emergency contact: " + e.getMessage();
+            }
         }
         return "Emergency contact not found";
     }

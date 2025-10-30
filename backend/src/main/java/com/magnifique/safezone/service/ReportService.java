@@ -32,15 +32,25 @@ public class ReportService {
     public Report saveReport(Report report) {
         if (report.getReporter() != null && report.getReporter().getId() != null) {
             Optional<User> user = userRepository.findById(report.getReporter().getId());
-            user.ifPresent(report::setReporter);
+            if (user.isEmpty()) {
+                throw new RuntimeException("Reporter not found with ID: " + report.getReporter().getId());
+            }
+            report.setReporter(user.get());
         }
         
         if (report.getLocation() != null && report.getLocation().getId() != null) {
             Optional<Location> location = locationRepository.findById(report.getLocation().getId());
-            location.ifPresent(report::setLocation);
+            if (location.isEmpty()) {
+                throw new RuntimeException("Location not found with ID: " + report.getLocation().getId());
+            }
+            report.setLocation(location.get());
         }
         
-        return reportRepository.save(report);
+        try {
+            return reportRepository.save(report);
+        } catch (Exception e) {
+            throw new RuntimeException("Error saving report: " + e.getMessage());
+        }
     }
     
     public List<Report> getAllReport() {
@@ -54,17 +64,41 @@ public class ReportService {
     public String updateReport(UUID id, Report report) {
         Optional<Report> existingReport = reportRepository.findById(id);
         if (existingReport.isPresent()) {
-            report.setId(id);
-            reportRepository.save(report);
-            return "Report updated successfully";
+            try {
+                if (report.getReporter() != null && report.getReporter().getId() != null) {
+                    Optional<User> user = userRepository.findById(report.getReporter().getId());
+                    if (user.isEmpty()) {
+                        return "Reporter not found with ID: " + report.getReporter().getId();
+                    }
+                    report.setReporter(user.get());
+                }
+                
+                if (report.getLocation() != null && report.getLocation().getId() != null) {
+                    Optional<Location> location = locationRepository.findById(report.getLocation().getId());
+                    if (location.isEmpty()) {
+                        return "Location not found with ID: " + report.getLocation().getId();
+                    }
+                    report.setLocation(location.get());
+                }
+                
+                report.setId(id);
+                reportRepository.save(report);
+                return "Report updated successfully";
+            } catch (Exception e) {
+                return "Error updating report: " + e.getMessage();
+            }
         }
         return "Report not found";
     }
     
     public String deleteReport(UUID id) {
         if (reportRepository.existsById(id)) {
-            reportRepository.deleteById(id);
-            return "Report deleted successfully";
+            try {
+                reportRepository.deleteById(id);
+                return "Report deleted successfully";
+            } catch (Exception e) {
+                return "Cannot delete report: " + e.getMessage();
+            }
         }
         return "Report not found";
     }

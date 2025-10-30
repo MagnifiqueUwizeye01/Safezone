@@ -32,7 +32,7 @@ public class Report {
     @JoinColumn(name = "reporter_id")
     private User reporter;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "location_id")
     private Location location;
 

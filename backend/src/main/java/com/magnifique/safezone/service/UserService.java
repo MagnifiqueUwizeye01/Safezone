@@ -50,8 +50,12 @@ public class UserService {
     
     public String deleteUser(UUID id) {
         if (userRepository.existsById(id)) {
-            userRepository.deleteById(id);
-            return "User deleted successfully";
+            try {
+                userRepository.deleteById(id);
+                return "User deleted successfully";
+            } catch (Exception e) {
+                return "Cannot delete user: " + e.getMessage();
+            }
         }
         return "User not found";
     }
