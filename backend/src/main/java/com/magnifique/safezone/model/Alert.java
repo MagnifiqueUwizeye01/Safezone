@@ -1,6 +1,8 @@
 package com.magnifique.safezone.model;
 
+import com.magnifique.safezone.enums.EAlertType;
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.HashSet;
 import java.util.UUID;
@@ -20,7 +22,13 @@ public class Alert {
     private String message;
 
     @Column(name = "alert_type")
-    private String alertType; // warning, emergency, info
+    @Enumerated(EnumType.STRING)
+    private EAlertType alertType;
+
+    // Location where the alert is relevant
+    @ManyToOne
+    @JoinColumn(name = "location_id")
+    private Location location;
 
     // Many-to-Many: Many users receive many alerts
     @ManyToMany
@@ -30,6 +38,18 @@ public class Alert {
         inverseJoinColumns = @JoinColumn(name = "user_id")
     )
     private Set<User> recipients = new HashSet<>();
+
+    // Constructors
+    public Alert() {
+        this.createdAt = LocalDateTime.now();
+    }
+
+    public Alert(String title, String message, EAlertType alertType) {
+        this();
+        this.title = title;
+        this.message = message;
+        this.alertType = alertType;
+    }
 
     public UUID getId() {
         return id;
@@ -55,12 +75,20 @@ public class Alert {
         this.message = message;
     }
 
-    public String getAlertType() {
+    public EAlertType getAlertType() {
         return alertType;
     }
 
-    public void setAlertType(String alertType) {
+    public void setAlertType(EAlertType alertType) {
         this.alertType = alertType;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
     public Set<User> getRecipients() {
@@ -69,5 +97,29 @@ public class Alert {
 
     public void setRecipients(Set<User> recipients) {
         this.recipients = recipients;
+    }
+
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    @Override
+    public String toString() {
+        return "Alert{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", message='" + message + '\'' +
+                ", alertType=" + alertType +
+                ", location=" + (location != null ? location.getName() : "null") +
+                ", recipients=" + recipients.size() +
+                ", createdAt=" + createdAt +
+                '}';
     }
 }

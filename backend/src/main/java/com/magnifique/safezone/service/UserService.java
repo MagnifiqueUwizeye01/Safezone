@@ -1,5 +1,6 @@
 package com.magnifique.safezone.service;
 
+import com.magnifique.safezone.enums.EUserRole;
 import com.magnifique.safezone.model.User;
 import com.magnifique.safezone.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ public class UserService {
         return "User saved successfully";
     }
     
-    public List<User> getAllUsers() {
+    public List<User> getAllUser() {
         return userRepository.findAll();
     }
     
@@ -56,12 +57,12 @@ public class UserService {
     }
     
     // Get users by role with sorting
-    public List<User> getUsersByRole(String role) {
+    public List<User> getUsersByRole(EUserRole role) {
         return userRepository.findByRole(role, Sort.by("username"));
     }
     
     // Get users by role with pagination
-    public Page<User> getUsersByRole(String role, Pageable pageable) {
+    public Page<User> getUsersByRole(EUserRole role, Pageable pageable) {
         return userRepository.findByRole(role, pageable);
     }
     

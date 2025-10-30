@@ -1,5 +1,6 @@
 package com.magnifique.safezone.controller;
 
+import com.magnifique.safezone.enums.EReportStatus;
 import com.magnifique.safezone.model.Report;
 import com.magnifique.safezone.service.ReportService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,12 +11,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/reports")
+@RequestMapping(value = "/report")
 public class ReportController {
 
     @Autowired
@@ -23,14 +23,15 @@ public class ReportController {
 
     // CREATE
     @PostMapping
-    public Report createReport(@RequestBody Report report) {
-        return reportService.saveReport(report);
+    public ResponseEntity<String> createReport(@RequestBody Report report) {
+        reportService.saveReport(report);
+        return new ResponseEntity<>("Report sent successfully", HttpStatus.CREATED);
     }
 
     // READ - Get all
-    @GetMapping
-    public List<Report> getAllReports() {
-        return reportService.getAllReports();
+    @GetMapping(value = "/all")
+    public ResponseEntity<?> getAllReport() {
+        return new ResponseEntity<>(reportService.getAllReport(), HttpStatus.OK);
     }
 
     // READ - Get by ID
@@ -69,7 +70,8 @@ public class ReportController {
             @PathVariable String status,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
+        EReportStatus reportStatus = EReportStatus.valueOf(status.toUpperCase());
         Pageable pageable = PageRequest.of(page, size);
-        return reportService.getReportsByStatus(status, pageable);
+        return reportService.getReportsByStatus(reportStatus, pageable);
     }
 }

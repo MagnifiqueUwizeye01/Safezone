@@ -1,5 +1,6 @@
 package com.magnifique.safezone.controller;
 
+import com.magnifique.safezone.enums.EAlertType;
 import com.magnifique.safezone.model.Alert;
 import com.magnifique.safezone.service.AlertService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,12 +11,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/alerts")
+@RequestMapping(value = "/alert")
 public class AlertController {
 
     @Autowired
@@ -23,14 +23,15 @@ public class AlertController {
 
     // CREATE
     @PostMapping
-    public Alert createAlert(@RequestBody Alert alert) {
-        return alertService.saveAlert(alert);
+    public ResponseEntity<String> createAlert(@RequestBody Alert alert) {
+        alertService.saveAlert(alert);
+        return new ResponseEntity<>("Alert sent successfully", HttpStatus.CREATED);
     }
 
     // READ - Get all
-    @GetMapping
-    public List<Alert> getAllAlerts() {
-        return alertService.getAllAlerts();
+    @GetMapping(value = "/all")
+    public ResponseEntity<?> getAllAlert() {
+        return new ResponseEntity<>(alertService.getAllAlert(), HttpStatus.OK);
     }
 
     // READ - Get by ID
@@ -69,7 +70,8 @@ public class AlertController {
             @PathVariable String type,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
+        EAlertType alertType = EAlertType.valueOf(type.toUpperCase());
         Pageable pageable = PageRequest.of(page, size);
-        return alertService.getAlertsByType(type, pageable);
+        return alertService.getAlertsByType(alertType, pageable);
     }
 }

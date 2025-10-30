@@ -1,5 +1,6 @@
 package com.magnifique.safezone.model;
 
+import com.magnifique.safezone.enums.ELocationType;
 import jakarta.persistence.*;
 import java.util.UUID;
 
@@ -24,6 +25,17 @@ public class Location {
     @ManyToOne
     @JoinColumn(name = "parent_id")
     private Location parent;
+
+    // Constructors
+    public Location() {
+    }
+
+    public Location(String code, String name, ELocationType type, Location parent) {
+        this.code = code;
+        this.name = name;
+        this.type = type;
+        this.parent = parent;
+    }
 
     public UUID getId() {
         return id;
@@ -63,5 +75,16 @@ public class Location {
 
     public void setParent(Location parent) {
         this.parent = parent;
+    }
+
+    @Override
+    public String toString() {
+        return "Location{" +
+                "id=" + id +
+                ", code='" + code + '\'' +
+                ", name='" + name + '\'' +
+                ", type=" + type +
+                ", parent=" + (parent != null ? parent.getName() : "null") +
+                '}';
     }
 }

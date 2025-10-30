@@ -1,6 +1,8 @@
 package com.magnifique.safezone.model;
 
+import com.magnifique.safezone.enums.EUserRole;
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
@@ -27,16 +29,21 @@ public class User {
     private String password;
     
     @Column(name = "role")
-    private String role; // citizen, police, admin
+    @Enumerated(EnumType.STRING)
+    private EUserRole role;
 
     @ManyToOne
     @JoinColumn(name = "location_id")
     private Location location; // User's location
 
     // Constructors
-    public User() {}
+    public User() {
+        this.createdAt = LocalDateTime.now();
+    }
 
-    public User(String fullName, String email, String phone, String password, String role) {
+    public User(String username, String fullName, String email, String phone, String password, EUserRole role) {
+        this();
+        this.username = username;
         this.fullName = fullName;
         this.email = email;
         this.phone = phone;
@@ -63,9 +70,29 @@ public class User {
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
 
-    public String getRole() { return role; }
-    public void setRole(String role) { this.role = role; }
+    public EUserRole getRole() { return role; }
+    public void setRole(EUserRole role) { this.role = role; }
 
     public Location getLocation() { return location; }
     public void setLocation(Location location) { this.location = location; }
+
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", role=" + role +
+                ", location=" + (location != null ? location.getName() : "null") +
+                ", createdAt=" + createdAt +
+                '}';
+    }
 }

@@ -19,7 +19,7 @@ import com.magnifique.safezone.model.Location;
 import com.magnifique.safezone.service.LocationService;
 
 @RestController
-@RequestMapping(value = "/api/locations")
+@RequestMapping(value = "/location")
 public class LocationController {
 
     @Autowired

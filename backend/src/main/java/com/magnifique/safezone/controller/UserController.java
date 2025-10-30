@@ -1,7 +1,9 @@
 package com.magnifique.safezone.controller;
 
-import com.magnifique.safezone.model.User;
-import com.magnifique.safezone.service.UserService;
+import com.magnifique.safezone.service.*;
+import com.magnifique.safezone.model.*;
+import com.magnifique.safezone.enums.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -15,15 +17,15 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping(value = "/user")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
     // CREATE
-    @PostMapping
-    public ResponseEntity<String> createUser(@RequestBody User user) {
+    @PostMapping(value = "/create")
+    public ResponseEntity<?> createUser(@RequestBody User user) {
         String result = userService.saveUser(user);
         if (result.contains("successfully")) {
             return new ResponseEntity<>(result, HttpStatus.CREATED);
@@ -32,9 +34,9 @@ public class UserController {
     }
 
     // READ - Get all
-    @GetMapping
-    public List<User> getAllUsers() {
-        return userService.getAllUsers();
+    @GetMapping(value = "/all")
+    public ResponseEntity<?> getAllUser() {
+        return new ResponseEntity<>(userService.getAllUser(), HttpStatus.OK);
     }
 
     // READ - Get by ID
@@ -70,7 +72,8 @@ public class UserController {
     // Get users by role (with sorting)
     @GetMapping("/role/{role}")
     public List<User> getUsersByRole(@PathVariable String role) {
-        return userService.getUsersByRole(role);
+        EUserRole userRole = EUserRole.valueOf(role.toUpperCase());
+        return userService.getUsersByRole(userRole);
     }
 
     // Get users by role (with pagination)
@@ -79,8 +82,9 @@ public class UserController {
             @PathVariable String role,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
+        EUserRole userRole = EUserRole.valueOf(role.toUpperCase());
         Pageable pageable = PageRequest.of(page, size);
-        return userService.getUsersByRole(role, pageable);
+        return userService.getUsersByRole(userRole, pageable);
     }
 
     // Get users by province code

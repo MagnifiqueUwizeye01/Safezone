@@ -1,12 +1,13 @@
 package com.magnifique.safezone.repository;
 
+import com.magnifique.safezone.enums.ELocationType;
 import com.magnifique.safezone.model.Location;
-import com.magnifique.safezone.model.ELocationType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -22,13 +23,16 @@ public interface LocationRepository extends JpaRepository<Location, UUID> {
     Optional<Location> findByName(String name);
     
     // Find by type
-    Optional<Location> findByType(ELocationType type);
+    List<Location> findByType(ELocationType type);
     
     // Find all provinces
     @Query("SELECT l FROM Location l WHERE l.type = 'PROVINCE'")
-    java.util.List<Location> findAllProvinces();
+    List<Location> findAllProvinces();
     
     // Find children by parent code
     @Query("SELECT l FROM Location l WHERE l.parent.code = :parentCode")
-    java.util.List<Location> findByParentCode(@Param("parentCode") String parentCode);
+    List<Location> findByParentCode(@Param("parentCode") String parentCode);
+    
+    // Find by parent
+    List<Location> findByParent(Location parent);
 }

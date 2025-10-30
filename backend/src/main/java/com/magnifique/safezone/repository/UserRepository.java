@@ -1,5 +1,6 @@
 package com.magnifique.safezone.repository;
 
+import com.magnifique.safezone.enums.EUserRole;
 import com.magnifique.safezone.model.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -25,10 +26,10 @@ public interface UserRepository extends JpaRepository<User, UUID> {
     Optional<User> findByEmail(String email);
     
     // Find by role with sorting
-    List<User> findByRole(String role, Sort sort);
+    List<User> findByRole(EUserRole role, Sort sort);
     
     // Find by role with pagination
-    Page<User> findByRole(String role, Pageable pageable);
+    Page<User> findByRole(EUserRole role, Pageable pageable);
     
     // Find users by location (province code)
     @Query("SELECT u FROM User u WHERE u.location.code = :provinceCode")
@@ -41,4 +42,11 @@ public interface UserRepository extends JpaRepository<User, UUID> {
     // Find user's province by user ID
     @Query("SELECT u.location.parent.parent.parent.parent FROM User u WHERE u.id = :userId")
     Optional<?> findProvinceByUserId(@Param("userId") UUID userId);
+    
+    // Find users by location ID
+    @Query("SELECT u FROM User u WHERE u.location.id = :locationId")
+    List<User> findByLocationId(@Param("locationId") UUID locationId);
+
+    // Find users by a list of location IDs (for region hierarchy)
+    List<User> findByLocation_IdIn(List<UUID> locationIds);
 }
