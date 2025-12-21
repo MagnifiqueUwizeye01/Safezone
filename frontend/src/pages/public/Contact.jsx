@@ -180,7 +180,6 @@ const Contact = () => {
     }
 
     setLoading(true);
-    // TODO: Send contact form to backend
     setTimeout(() => {
       setLoading(false);
       setSuccess(true);

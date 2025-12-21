@@ -13,7 +13,7 @@ const ForgotPassword = () => {
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
-  const [submitted, setSubmitted] = useState(false); // Prevent duplicate submissions
+  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) => {
     setEmail(e.target.value);
@@ -26,7 +26,6 @@ const ForgotPassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Prevent duplicate submissions
     if (loading || submitted) {
       return;
     }
@@ -53,15 +52,6 @@ const ForgotPassword = () => {
     try {
       const result = await authService.forgotPassword(email);
       
-      // Debug: Log the response to see what we're getting
-      console.log('=== FORGOT PASSWORD RESPONSE ===');
-      console.log('Full response:', JSON.stringify(result, null, 2));
-      console.log('Success value:', result?.success);
-      console.log('Success type:', typeof result?.success);
-      console.log('Message:', result?.message);
-      
-      // Handle response - backend returns { success: boolean, message: string }
-      // Check for success property - be very explicit and handle all cases
       const hasSuccessFlag = result && (
         result.success === true || 
         result.success === 'true' ||
@@ -69,49 +59,29 @@ const ForgotPassword = () => {
         String(result.success).toLowerCase() === 'true'
       );
       
-      // Fallback: Check if message indicates success (for debugging)
       const messageIndicatesSuccess = result?.message && (
         result.message.toLowerCase().includes('sent') ||
         result.message.toLowerCase().includes('otp') ||
         result.message.toLowerCase().includes('success')
       );
       
-      // Use success flag if present, otherwise fallback to message check (but only if success is not explicitly false)
       const isSuccess = hasSuccessFlag || (messageIndicatesSuccess && result?.success !== false);
       
-      console.log('Has success flag?', hasSuccessFlag);
-      console.log('Message indicates success?', messageIndicatesSuccess);
-      console.log('Final isSuccess?', isSuccess);
-      
       if (isSuccess) {
-        console.log('✅ Setting success to TRUE');
         setSuccess(true);
-        setError(null); // Clear any errors
+        setError(null);
       } else {
-        console.log('❌ Success is false, showing error');
-        // Backend returned success: false (e.g., email not found)
         setError(result?.message || 'Failed to send password reset OTP');
         setSuccess(false);
       }
     } catch (err) {
-      // Debug: Log the error to see what's happening
-      console.error('=== FORGOT PASSWORD ERROR ===');
-      console.error('Error object:', err);
-      console.error('Error response:', err.response?.data);
-      console.error('Error status:', err.response?.status);
-      console.error('Error message:', err.message);
-      
-      // Handle HTTP errors (400, 500, etc.)
       const errorData = err.response?.data;
       
-      // Check if it's a 400 with success: false (email not found)
       if (err.response?.status === 400 && errorData) {
         if (errorData.success === false) {
           setError(errorData.message || 'Email not found in our system');
           setSuccess(false);
         } else if (errorData.success === true) {
-          // Edge case: 400 response but success is true
-          console.log('✅ 400 response but success: true, setting success state');
           setSuccess(true);
           setError(null);
         } else {
@@ -119,19 +89,16 @@ const ForgotPassword = () => {
           setSuccess(false);
         }
       } else {
-        // Other errors (network, 500, etc.)
         setError(errorData?.message || errorData?.error || 'Failed to send password reset OTP. Please try again.');
         setSuccess(false);
       }
     } finally {
       setLoading(false);
-      // Reset submitted flag after 2 seconds to allow retry
       setTimeout(() => setSubmitted(false), 2000);
     }
   };
 
   const handleContinue = () => {
-    // Navigate to reset password page with email in state
     navigate('/reset-password', { state: { email } });
   };
 
@@ -143,7 +110,6 @@ const ForgotPassword = () => {
             <p className="text-lg text-slate-600">Enter your email to receive a password reset OTP code</p>
           </div>
 
-          {/* Only show error alerts when NOT in success state */}
           {error && !success && (
             <div className="mb-4">
               <Alert type="danger" message={error} dismissible onClose={() => setError(null)} />

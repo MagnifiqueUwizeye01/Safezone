@@ -21,10 +21,6 @@ const Login = () => {
   const [passwordFocused, setPasswordFocused] = useState(false);
 
   // SECURITY: Do NOT auto-redirect authenticated users
-  // The login page should ALWAYS show the form and require credentials
-  // Users should explicitly enter credentials even if they have a session
-  // This prevents unauthorized access and ensures proper authentication flow
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));

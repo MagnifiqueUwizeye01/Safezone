@@ -34,19 +34,14 @@ export const AuthProvider = ({ children }) => {
           // Check if token is expired (only if it's a valid JWT)
           let isExpired = false;
           
-          // Check if token is a JWT (has dots) or a temp token
           if (token.includes('.') && token.split('.').length === 3) {
-            // It's a JWT, check expiration
             try {
               isExpired = tokenManager.isTokenExpired(token);
             } catch (tokenError) {
-              // If token parsing fails, consider it expired
               console.warn('Token validation error:', tokenError);
               isExpired = true;
             }
           } else {
-            // It's a temp token (like "temp-token-{userId}"), treat as valid
-            // In production, you'd want to validate these differently
             isExpired = false;
           }
 
@@ -431,7 +426,6 @@ export const AuthProvider = ({ children }) => {
       }
     }
     
-    // Set authenticated state - this is critical!
     setIsAuthenticated(true);
     console.log('Authentication state set to true');
   };

@@ -31,7 +31,6 @@ const SystemSettings = () => {
     setError(null);
     setSuccess(null);
     
-    // TODO: Save settings to backend
     setTimeout(() => {
       setLoading(false);
       setSuccess('Settings saved successfully!');

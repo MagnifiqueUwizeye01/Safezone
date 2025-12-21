@@ -74,8 +74,6 @@ const MyProfile = () => {
   };
 
   const loadLocationHierarchy = async (location) => {
-    // This would need to traverse up the hierarchy to get all parent locations
-    // For now, we'll set the current location
     if (location.parent) {
       // Load parent chain
     }

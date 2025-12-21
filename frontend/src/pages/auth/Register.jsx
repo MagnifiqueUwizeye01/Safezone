@@ -42,9 +42,6 @@ const Register = () => {
 
   useEffect(() => {
     // SECURITY: Do NOT auto-redirect authenticated users
-    // The register page should ALWAYS show the form
-    // Users should explicitly register even if they have a session
-    // This prevents unauthorized access and ensures proper authentication flow
     fetchProvinces();
   }, []);
 
@@ -132,7 +129,6 @@ const Register = () => {
       setLoadingLocations(prev => ({ ...prev, cells: true }));
       const data = await locationService.getChildrenByParentCode(sectorCode);
       if (Array.isArray(data)) {
-        // Filter to only show CELLs (this fixes the issue where villages were showing in cell dropdown)
         setCells(data.filter(loc => loc.type === 'CELL'));
       } else {
         setCells([]);
