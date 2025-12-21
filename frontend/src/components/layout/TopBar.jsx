@@ -5,15 +5,17 @@ import { useNotification } from '../../hooks/useNotification';
 import { useGlobalSearch } from '../../context/SearchContext';
 import ConfirmDialog from '../common/ConfirmDialog';
 import Avatar from '../common/Avatar';
+import NotificationItem from '../notifications/NotificationItem';
 import { Menu, Search, Bell, ChevronDown } from 'lucide-react';
 
 const TopBar = ({ onMenuClick }) => {
   const { user, logout } = useAuth();
-  const { unreadCount } = useNotification();
+  const { unreadCount, notifications, markAsRead, markAllAsRead } = useNotification();
   const { handleGlobalSearch } = useGlobalSearch();
   const navigate = useNavigate();
   const [searchValue, setSearchValue] = useState('');
   const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const [notificationOpen, setNotificationOpen] = useState(false);
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
 
   const handleSearch = (e) => {
@@ -84,6 +86,7 @@ const TopBar = ({ onMenuClick }) => {
           {/* Notification Bell */}
           <div className="relative">
             <button
+              onClick={() => setNotificationOpen(!notificationOpen)}
               className="p-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors duration-200 relative"
               aria-label="Notifications"
             >
@@ -92,6 +95,62 @@ const TopBar = ({ onMenuClick }) => {
                 <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
               )}
             </button>
+            
+            {/* Notification Dropdown */}
+            {notificationOpen && (
+              <>
+                <div
+                  className="fixed inset-0 z-10"
+                  onClick={() => setNotificationOpen(false)}
+                />
+                <div className="absolute right-0 mt-2 w-96 bg-white rounded-lg shadow-xl border border-gray-200 z-20 max-h-[500px] flex flex-col">
+                  <div className="px-4 py-3 border-b border-gray-200 flex items-center justify-between flex-shrink-0">
+                    <h3 className="text-lg font-semibold text-gray-900">Notifications</h3>
+                    <div className="flex items-center gap-2">
+                      {unreadCount > 0 && (
+                        <button
+                          onClick={() => {
+                            markAllAsRead();
+                            setNotificationOpen(false);
+                          }}
+                          className="text-sm text-emerald-600 hover:text-emerald-700 font-medium"
+                        >
+                          Mark all read
+                        </button>
+                      )}
+                      <button
+                        onClick={() => {
+                          setNotificationOpen(false);
+                          navigate(`/${user?.role?.toLowerCase()}/notifications`);
+                        }}
+                        className="text-sm text-emerald-600 hover:text-emerald-700 font-medium"
+                      >
+                        View all
+                      </button>
+                    </div>
+                  </div>
+                  <div className="overflow-y-auto flex-1">
+                    {notifications.length === 0 ? (
+                      <div className="px-4 py-8 text-center text-gray-500">
+                        <Bell className="w-12 h-12 mx-auto mb-2 text-gray-300" />
+                        <p>No notifications</p>
+                      </div>
+                    ) : (
+                      <div className="divide-y divide-gray-100">
+                        {notifications.slice(0, 5).map((notification) => (
+                          <NotificationItem
+                            key={notification.id}
+                            notification={notification}
+                            onMarkAsRead={markAsRead}
+                            compact={true}
+                          />
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </>
+            )}
           </div>
 
           {/* User Profile */}

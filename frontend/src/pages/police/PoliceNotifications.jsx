@@ -8,7 +8,7 @@ import { useNotification } from '../../hooks/useNotification';
 import { useAuth } from '../../hooks/useAuth';
 import { Bell } from 'lucide-react';
 
-const MyNotifications = () => {
+const PoliceNotifications = () => {
   const { user } = useAuth();
   const { notifications, loading, markAsRead, markAllAsRead, fetchNotifications } = useNotification();
   const [filter, setFilter] = useState('all');
@@ -53,7 +53,7 @@ const MyNotifications = () => {
               <div>
                 <h1 className="text-3xl font-bold text-gray-900 mb-2 flex items-center gap-3">
                   <Bell className="w-8 h-8 text-emerald-600" />
-                  My Notifications
+                  Notifications
                 </h1>
                 <p className="text-gray-600">View and manage your notifications</p>
               </div>
@@ -130,5 +130,5 @@ const MyNotifications = () => {
   );
 };
 
-export default MyNotifications;
+export default PoliceNotifications;
 

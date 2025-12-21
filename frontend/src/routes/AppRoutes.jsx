@@ -28,6 +28,7 @@ import EmergencyManagement from '../pages/admin/EmergencyManagement';
 import Analytics from '../pages/admin/Analytics';
 import SystemSettings from '../pages/admin/SystemSettings';
 import AdminProfile from '../pages/admin/AdminProfile';
+import AdminNotifications from '../pages/admin/AdminNotifications';
 
 // Police Routes
 import PoliceDashboard from '../pages/police/PoliceDashboard';
@@ -38,6 +39,7 @@ import ManageAlerts from '../pages/police/ManageAlerts';
 import IncidentAnalytics from '../pages/police/IncidentAnalytics';
 import EmergencyContacts from '../pages/police/EmergencyContacts';
 import PoliceProfile from '../pages/police/PoliceProfile';
+import PoliceNotifications from '../pages/police/PoliceNotifications';
 
 // Citizen Routes
 import CitizenDashboard from '../pages/citizen/CitizenDashboard';
@@ -160,6 +162,14 @@ const AppRoutes = () => {
         }
       />
       <Route
+        path="/admin/notifications"
+        element={
+          <RoleBasedRoute allowedRoles={[USER_ROLES.ADMIN]}>
+            <AdminNotifications />
+          </RoleBasedRoute>
+        }
+      />
+      <Route
         path="/admin/profile"
         element={
           <RoleBasedRoute allowedRoles={[USER_ROLES.ADMIN]}>
@@ -222,6 +232,14 @@ const AppRoutes = () => {
         element={
           <RoleBasedRoute allowedRoles={[USER_ROLES.POLICE]}>
             <EmergencyContacts />
+          </RoleBasedRoute>
+        }
+      />
+      <Route
+        path="/police/notifications"
+        element={
+          <RoleBasedRoute allowedRoles={[USER_ROLES.POLICE]}>
+            <PoliceNotifications />
           </RoleBasedRoute>
         }
       />
