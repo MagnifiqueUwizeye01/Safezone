@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="shieldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background Circle -->
+  <circle cx="50" cy="50" r="48" fill="url(#shieldGradient)"/>
+  
+  <!-- Shield Shape -->
+  <path d="M 50 15 L 30 25 L 30 45 Q 30 65 50 75 Q 70 65 70 45 L 70 25 Z" 
+        fill="white" 
+        stroke="#10b981" 
+        stroke-width="1.5"/>
+  
+  <!-- Safety Checkmark -->
+  <path d="M 40 48 L 46 54 L 60 40" 
+        stroke="#10b981" 
+        stroke-width="4" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" 
+        fill="none"/>
+  
+  <!-- Small accent dots -->
+  <circle cx="50" cy="35" r="2" fill="#10b981"/>
+</svg>
+
