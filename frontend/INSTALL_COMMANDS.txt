@@ -1,0 +1,4 @@
+# Run these commands in the safezone-frontend directory
+
+npm install react-router-dom axios date-fns react-icons
+
