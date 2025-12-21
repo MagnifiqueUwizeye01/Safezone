@@ -89,7 +89,5 @@ safezone-frontend/
 - **Police**: Report management, alert creation, incident monitoring
 - **Citizen**: Report submission, alert viewing, profile management
 
-## License
 
-This project is developed for academic purposes.
 
