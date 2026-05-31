@@ -62,7 +62,7 @@ The system includes 6 core entities with Rwandan location hierarchy support.
 
 #### Query Endpoints
 - **GET** `/location/provinces` - Get all provinces
-- **GET** `/location/code/{code}` - Get location by code
+- **GET** `/location/code/{code}` - Get location by code 
 - **GET** `/location/parent/{parentCode}` - Get children by parent code
 
 ---
