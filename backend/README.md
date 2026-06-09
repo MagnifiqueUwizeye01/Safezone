@@ -161,7 +161,7 @@ The system includes 6 core entities with Rwandan location hierarchy support.
 
 ---
 
-### 👤 User Profile Endpoints (One-to-One Relationship)
+### User Profile Endpoints (One-to-One Relationship)
 
 #### CRUD Operations
 - **POST** `/user-profile/create` - Create user profile
@@ -186,5 +186,5 @@ The system includes 6 core entities with Rwandan location hierarchy support.
 ---
 
   
-**Course**: Web Technology  
+ 
 
