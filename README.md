@@ -28,7 +28,7 @@
 The platform brings three groups together:
 
 - **Citizens** who report what they see and receive safety alerts
-- **Police officers** who monitor incidents and broadcast warnings 
+- **Police officers** who monitor incidents and broadcast warnings
 - **Administrators** who manage the entire system 
 
 ### The problem it solves
