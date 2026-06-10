@@ -61,33 +61,33 @@ See SafeZone in action through walkthrough videos for each user role.
 
 <br/>
 
-<table>
+<table width="100%">
 <tr>
-<td align="center" width="33%">
+<td align="center" valign="top" width="33%">
 
-**Citizen**
+### Citizen
 
-<video src="https://github.com/user-attachments/assets/c4f12de7-ec92-412c-931d-580decc9f5b5" controls width="100%"></video>
+<video src="https://github.com/user-attachments/assets/c4f12de7-ec92-412c-931d-580decc9f5b5" autoplay muted loop controls width="100%" style="border-radius:8px;min-height:300px;"></video>
 
-Submit incident reports, view location-based safety alerts, browse emergency contacts, and manage your profile and notifications.
-
-</td>
-<td align="center" width="33%">
-
-**Police**
-
-<video src="https://github.com/user-attachments/assets/cdab2d22-6ef1-49cb-8e80-c608fdd31c3f" controls width="100%"></video>
-
-Monitor incident reports, create and manage location-based alerts, review incident analytics, and access emergency contacts from the police dashboard.
+<sub>Submit incident reports, view location-based safety alerts, browse emergency contacts, and manage your profile and notifications.</sub>
 
 </td>
-<td align="center" width="33%">
+<td align="center" valign="top" width="33%">
 
-**Admin**
+### Police
 
-<video src="https://github.com/user-attachments/assets/27bfed72-bd5a-43ab-afc2-9bb40444896c" controls width="100%"></video>
+<video src="https://github.com/user-attachments/assets/cdab2d22-6ef1-49cb-8e80-c608fdd31c3f" autoplay muted loop controls width="100%" style="border-radius:8px;min-height:300px;"></video>
 
-Manage users, locations, reports, and alerts, oversee emergency contacts, and view system-wide analytics from the admin dashboard.
+<sub>Monitor incident reports, create and manage location-based alerts, review incident analytics, and access emergency contacts from the police dashboard.</sub>
+
+</td>
+<td align="center" valign="top" width="33%">
+
+### Admin
+
+<video src="https://github.com/user-attachments/assets/27bfed72-bd5a-43ab-afc2-9bb40444896c" autoplay muted loop controls width="100%" style="border-radius:8px;min-height:300px;"></video>
+
+<sub>Manage users, locations, reports, and alerts, oversee emergency contacts, and view system-wide analytics from the admin dashboard.</sub>
 
 </td>
 </tr>
