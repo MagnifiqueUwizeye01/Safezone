@@ -3,11 +3,8 @@
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f2027,50:1a4a3a,100:2d8653&height=180&section=header&text=SafeZone%20—%20Demo%20Walkthroughs&fontSize=40&fontColor=ffffff&fontAlignY=38&desc=Role-based%20video%20demonstrations%20of%20the%20platform&descSize=16&descAlignY=60&descColor=a8d5b5&animation=fadeIn" width="100%"/>
 
 <br/>
-
 [![Back to README](https://img.shields.io/badge/Back%20to%20README-1a4a3a?style=for-the-badge&logo=github&logoColor=white)](README.md)
-
 </div>
-
 <br/>
 
 ---
@@ -17,7 +14,6 @@ See SafeZone in action through walkthrough videos for each user role.
 <br/>
 
 ---
-
 ### 𝙲𝚒𝚝𝚒𝚣𝚎𝚗
 
 Submit incident reports, view location-based safety alerts, browse emergency contacts, and manage your profile and notifications.
