@@ -283,9 +283,7 @@ For the complete endpoint list with HTTP methods and query parameters, see [`bac
 
 **Magnifique Uwizeye**
 
-[![GitHub](https://img.shields.io/badge/GitHub-MagnifiqueUwizeye01-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/MagnifiqueUwizeye01)
 
-<br/>
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f2027,50:1a4a3a,100:2d8653&height=100&section=footer&fontSize=20&fontColor=ffffff&animation=fadeIn" width="100%"/>
 
