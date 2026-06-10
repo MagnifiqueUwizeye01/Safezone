@@ -35,7 +35,7 @@ The platform brings three groups together:
 
 Communities often lack a single place to report incidents, alert nearby residents, and coordinate with local authorities. SafeZone solves this by combining **incident reporting**, **location-based alerts**, **notifications**, and **role-based dashboards** in one application.
 
-### What makes it unique
+### What makes it unique 
 
 SafeZone is built around **Rwanda's administrative geography**. Every user, report, and alert is connected to a real location in this hierarchy:
 
