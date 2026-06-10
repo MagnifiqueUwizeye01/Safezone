@@ -45,8 +45,8 @@ SafeZone is a **monorepo** — one repository containing two applications:
 
 | Part | Folder | Purpose |
 |---|---|---|
-| **Frontend** | `frontend/` | React web app — what users see and interact with |
-| **Backend** | `backend/` | Spring Boot REST API — business logic and database access |
+| **Frontend** | `frontend/` | React web app |
+| **Backend** | `backend/` | Spring Boot REST API |
 
 The frontend talks to the backend over HTTP. The backend stores everything in **PostgreSQL** using JPA/Hibernate.
 
