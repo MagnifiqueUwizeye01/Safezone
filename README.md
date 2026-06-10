@@ -1,9 +1,5 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f2027,50:1a4a3a,100:2d8653&height=200&section=header&text=SafeZone&fontSize=72&fontColor=ffffff&fontAlignY=38&desc=Smart%20Community%20Safety%20%26%20Incident%20Reporting%20Platform&descSize=18&descAlignY=60&descColor=a8d5b5&animation=fadeIn" width="100%"/>
-
-<br/>
-
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)](https://spring.io/projects/spring-boot)
 [![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
