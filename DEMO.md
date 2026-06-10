@@ -40,6 +40,6 @@ See SafeZone in action through walkthrough videos for each user role.
 
 <div align="center">
 
-[← Back to README](README.md)
+[Back to README](README.md)
 
 </div>
