@@ -1,17 +1,23 @@
 <div align="center">
 
+<br/>
+
 # SafeZone
 
 **Smart Community Safety & Incident Reporting Platform**
 
-[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5-6DB33F?logo=springboot&logoColor=white)](https://spring.io/projects/spring-boot)
-[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)](https://react.dev/)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=white)](https://www.postgresql.org/)  
-[![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white)](https://vite.dev/)  
-      
+<br/>
+
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5-6DB33F?style=flat-square&logo=springboot&logoColor=white)](https://spring.io/projects/spring-boot)
+[![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+[![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vite.dev/)
+
+<br/>
+
 </div>
 
-
+---
 
 ## About
 
@@ -37,13 +43,15 @@ Together, the frontend and backend live in one **monorepo**, making the full Saf
 
 ## What It Does
 
-- **Incident reporting** — Citizens submit reports with types such as theft, violence, harassment, vandalism, suspicious activity, and emergencies. Each report moves through statuses: `PENDING`, `IN_PROGRESS`, `RESOLVED`, or `CANCELLED`.
-- **Safety alerts** — Police and admins create location-based alerts (`WARNING`, `EMERGENCY`, `INFO`, `SAFETY_ALERT`, `COMMUNITY_UPDATE`) targeted to users in the affected area.
-- **Notifications** — Users receive notifications linked to reports and alerts, with read/unread tracking and mark-all-read support.
-- **Emergency contacts** — A location-based directory of police, fire, medical, ambulance, and other emergency services.
-- **Location management** — Admins build and maintain the full Rwanda administrative hierarchy from province down to village.
-- **User management** — Role-based access for **Citizen**, **Police**, and **Admin** users, with profile management for each account.
-- **Dashboards & analytics** — Role-specific dashboards with statistics, charts, recent activity, and management tools.
+| Feature | Description |
+|---|---|
+| **Incident Reporting** | Citizens submit reports with types such as theft, violence, harassment, vandalism, suspicious activity, and emergencies. Each report moves through statuses: `PENDING`, `IN_PROGRESS`, `RESOLVED`, or `CANCELLED`. |
+| **Safety Alerts** | Police and admins create location-based alerts (`WARNING`, `EMERGENCY`, `INFO`, `SAFETY_ALERT`, `COMMUNITY_UPDATE`) targeted to users in the affected area. |
+| **Notifications** | Users receive notifications linked to reports and alerts, with read/unread tracking and mark-all-read support. |
+| **Emergency Contacts** | A location-based directory of police, fire, medical, ambulance, and other emergency services. |
+| **Location Management** | Admins build and maintain the full Rwanda administrative hierarchy from province down to village. |
+| **User Management** | Role-based access for **Citizen**, **Police**, and **Admin** users, with profile management for each account. |
+| **Dashboards & Analytics** | Role-specific dashboards with statistics, charts, recent activity, and management tools. |
 
 ---
 
@@ -51,23 +59,41 @@ Together, the frontend and backend live in one **monorepo**, making the full Saf
 
 See SafeZone in action through walkthrough videos for each user role.
 
-### Citizen Demo
+<br/>
+
+<table>
+<tr>
+<td align="center" width="33%">
+
+**Citizen**
+
+<video src="https://github.com/user-attachments/assets/c4f12de7-ec92-412c-931d-580decc9f5b5" controls width="100%"></video>
 
 Submit incident reports, view location-based safety alerts, browse emergency contacts, and manage your profile and notifications.
 
-https://github.com/user-attachments/assets/c4f12de7-ec92-412c-931d-580decc9f5b5
+</td>
+<td align="center" width="33%">
 
-### Police Demo
+**Police**
+
+<video src="https://github.com/user-attachments/assets/cdab2d22-6ef1-49cb-8e80-c608fdd31c3f" controls width="100%"></video>
 
 Monitor incident reports, create and manage location-based alerts, review incident analytics, and access emergency contacts from the police dashboard.
 
-https://github.com/user-attachments/assets/cdab2d22-6ef1-49cb-8e80-c608fdd31c3f
+</td>
+<td align="center" width="33%">
 
-### Admin Demo
+**Admin**
+
+<video src="https://github.com/user-attachments/assets/27bfed72-bd5a-43ab-afc2-9bb40444896c" controls width="100%"></video>
 
 Manage users, locations, reports, and alerts, oversee emergency contacts, and view system-wide analytics from the admin dashboard.
 
-https://github.com/user-attachments/assets/27bfed72-bd5a-43ab-afc2-9bb40444896c
+</td>
+</tr>
+</table>
+
+<br/>
 
 ---
 
@@ -86,10 +112,10 @@ When a citizen submits a report, the frontend sends a request to the API, the se
 ## Tech Stack
 
 | Layer | Technologies |
-|-------|--------------|
-| Frontend | React 19, Vite 7, Tailwind CSS, React Router, Axios, Lucide React |
-| Backend | Java 17, Spring Boot 3.5.6, Spring Data JPA, Maven |
-| Database | PostgreSQL |
+|---|---|
+| **Frontend** | React 19, Vite 7, Tailwind CSS, React Router, Axios, Lucide React |
+| **Backend** | Java 17, Spring Boot 3.5.6, Spring Data JPA, Maven |
+| **Database** | PostgreSQL |
 
 ---
 
@@ -128,7 +154,7 @@ cd backend
 mvnw.cmd spring-boot:run      # Windows
 ```
 
-API runs at **http://localhost:8080**
+> API runs at **http://localhost:8080**
 
 ### 4. Run the frontend
 
@@ -147,7 +173,7 @@ VITE_API_BASE_URL=http://localhost:8080
 npm run dev
 ```
 
-App runs at **http://localhost:5173**
+> App runs at **http://localhost:5173**
 
 ---
 
