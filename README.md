@@ -37,7 +37,7 @@ Communities often lack a single place to report incidents, alert nearby resident
 
 ### What makes it unique 
 
-SafeZone is built around **Rwanda's administrative geography**. Every user, report, and alert is connected to a real location in this hierarchy:
+SafeZone is built around **Rwanda's administrative geography**. Every user, report, and alert is connected to a real location in this hierarchy: 
 
 ```
 Province → District → Sector → Cell → Village
