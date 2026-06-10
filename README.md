@@ -25,9 +25,11 @@ The platform brings three groups together:
 - **Police officers** who monitor incidents and broadcast warnings
 - **Administrators** who manage the entire system
 
+
 ### The problem it solves
 
 Communities often lack a single place to report incidents, alert nearby residents, and coordinate with local authorities. SafeZone solves this by combining **incident reporting**, **location-based alerts**, **notifications**, and **role-based dashboards** in one application.
+
 
 ### What makes it unique
 
@@ -265,9 +267,6 @@ For the complete endpoint list with HTTP methods and query parameters, see [`bac
 
 **Magnifique Uwizeye**
 
-[![GitHub](https://img.shields.io/badge/GitHub-MagnifiqueUwizeye01-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/MagnifiqueUwizeye01)
-
-<br/>
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f2027,50:1a4a3a,100:2d8653&height=100&section=footer&animation=fadeIn" width="100%"/>
 
