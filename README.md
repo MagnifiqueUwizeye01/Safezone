@@ -2,7 +2,7 @@
 
 <br/>
 
-# SafeZone
+# SafeZone 
 
 **Smart Community Safety & Incident Reporting Platform**
 
