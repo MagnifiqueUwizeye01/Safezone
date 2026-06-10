@@ -28,6 +28,22 @@ What makes SafeZone different is **location-aware design**. The platform is buil
 - **User management** — Role-based access for citizens, police, admins, and community leaders.
 - **Dashboards & analytics** — Role-specific views with stats, charts, and management tools.
 
+## Demo
+
+Walkthroughs for each user role in the platform.
+
+### Admin
+
+<video src="https://github.com/MagnifiqueUwizeye01/Safezone/raw/main/videos/admin-demo.mp4" controls width="100%"></video>
+
+### Police
+
+<video src="https://github.com/MagnifiqueUwizeye01/Safezone/raw/main/videos/police-demo.mp4" controls width="100%"></video>
+
+### Citizen
+
+<video src="https://github.com/MagnifiqueUwizeye01/Safezone/raw/main/videos/citizen-demo.mp4" controls width="100%"></video>
+
 ## How It Works
 
 SafeZone is a **monorepo** with two applications that work together:
