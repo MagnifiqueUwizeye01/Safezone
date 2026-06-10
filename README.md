@@ -6,7 +6,7 @@
 
 **Smart Community Safety & Incident Reporting Platform** 
 
-<br/>
+<br/> 
 
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5-6DB33F?style=flat-square&logo=springboot&logoColor=white)](https://spring.io/projects/spring-boot)
 [![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev/)
