@@ -11,11 +11,8 @@
 <br/>
 
 ---
-
 See SafeZone in action through walkthrough videos for each user role.
-
 <br/>
-
 ---
 
 ### 𝙲𝚒𝚝𝚒𝚣𝚎𝚗
