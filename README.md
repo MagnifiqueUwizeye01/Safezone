@@ -1,6 +1,8 @@
 <div align="center">
 
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f2027,50:1a4a3a,100:2d8653&height=200&section=header&text=SafeZone&fontSize=72&fontColor=ffffff&fontAlignY=38&desc=Smart%20Community%20Safety%20%26%20Incident%20Reporting%20Platform&descSize=18&descAlignY=60&descColor=a8d5b5&animation=fadeIn" width="100%"/>
 
+<br/>
 
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)](https://spring.io/projects/spring-boot)
 [![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
@@ -16,7 +18,6 @@
 [![User Roles](https://img.shields.io/badge/User%20Roles-1a4a3a?style=flat-square)](#user-roles)
 [![How It Works](https://img.shields.io/badge/How%20It%20Works-1a4a3a?style=flat-square)](#how-it-works)
 [![Getting Started](https://img.shields.io/badge/Getting%20Started-1a4a3a?style=flat-square)](#getting-started)
-[![Demo](https://img.shields.io/badge/Demo-2d8653?style=flat-square)](#demo)
 
 </div>
 
@@ -24,7 +25,7 @@
 
 ---
 
-## About
+## 𝙰𝚋𝚘𝚞𝚝
 
 **SafeZone** is a full-stack community safety platform that helps people report security incidents, respond to them faster, and stay informed about safety in their area.
 
@@ -63,7 +64,7 @@ The frontend talks to the backend over HTTP. The backend stores everything in **
 
 ---
 
-## What It Does
+## 𝚆𝚑𝚊𝚝 𝙸𝚝 𝙳𝚘𝚎𝚜
 
 | Feature | Description |
 |---|---|
@@ -79,7 +80,7 @@ The frontend talks to the backend over HTTP. The backend stores everything in **
 
 ---
 
-## User Roles
+## 𝚄𝚜𝚎𝚛 𝚁𝚘𝚕𝚎𝚜
 
 Each role sees a different part of the platform after logging in.
 
@@ -97,7 +98,7 @@ Each role sees a different part of the platform after logging in.
 
 ---
 
-## How It Works
+## 𝙷𝚘𝚠 𝙸𝚝 𝚆𝚘𝚛𝚔𝚜
 
 ### Architecture
 
@@ -143,8 +144,7 @@ The API covers **seven core entities**:
 
 <div align="center">
 
-## Tech Stack
-
+## 𝚃𝚎𝚌𝚑 𝚂𝚝𝚊𝚌𝚔
 
 | Layer | Technologies |
 |:---:|---|
@@ -158,7 +158,7 @@ The API covers **seven core entities**:
 
 ---
 
-## Getting Started
+## 𝙶𝚎𝚝𝚝𝚒𝚗𝚐 𝚂𝚝𝚊𝚛𝚝𝚎𝚍
 
 ### Prerequisites
 
@@ -221,7 +221,7 @@ npm run dev
 
 ---
 
-## Project Structure
+## 𝙿𝚛𝚘𝚓𝚎𝚌𝚝 𝚂𝚝𝚛𝚞𝚌𝚝𝚞𝚛𝚎
 
 ```
 Safezone/
@@ -247,7 +247,7 @@ Safezone/
 
 ---
 
-## API Reference
+## 𝙰𝙿𝙸 𝚁𝚎𝚏𝚎𝚛𝚎𝚗𝚌𝚎
 
 The backend exposes **56+ REST endpoints** across all seven resources.
 
@@ -259,11 +259,9 @@ For the complete endpoint list with HTTP methods and query parameters, see [`bac
 
 ---
 
-## Database Schema
-
 <div align="center">
 
-## Database Schema
+## 𝙳𝚊𝚝𝚊𝚋𝚊𝚜𝚎 𝚂𝚌𝚑𝚎𝚖𝚊
 
 <img src="https://github.com/user-attachments/assets/4027c998-2693-463d-863c-cce5a0e4854e" alt="SafeZone ER Diagram" width="85%" />
 
@@ -275,16 +273,16 @@ For the complete endpoint list with HTTP methods and query parameters, see [`bac
 
 ---
 
-
 <div align="center">
 
-## Author
-
+## 𝙰𝚞𝚝𝚑𝚘𝚛
 
 **Magnifique Uwizeye**
 
+[![GitHub](https://img.shields.io/badge/GitHub-MagnifiqueUwizeye01-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/MagnifiqueUwizeye01)
 
+<br/>
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f2027,50:1a4a3a,100:2d8653&height=100&section=footer&fontSize=20&fontColor=ffffff&animation=fadeIn" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f2027,50:1a4a3a,100:2d8653&height=100&section=footer&animation=fadeIn" width="100%"/>
 
 </div>
