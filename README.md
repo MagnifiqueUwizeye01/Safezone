@@ -242,7 +242,7 @@ The system uses seven entities with relationships mapped through JPA/Hibernate, 
 
 Watch role-based walkthrough videos showing the Citizen, Police, and Admin dashboards in action.
 
-**→ [View Demo Videos](DEMO.md)**
+** [View Demo Videos](DEMO.md)**
 
 ---
 
