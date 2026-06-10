@@ -24,7 +24,7 @@ The platform brings three groups together:
 
 ### The problem it solves
 
-Communities often lack a single place to report incidents, alert nearby residents and coordinate with local authorities. SafeZone solves this by combining **incident reporting**, **location-based alerts**, **notifications**, and **role-based dashboards** in one application.
+Communities often lack a single place to report incidents, alert nearby residents and coordinate with local authorities. SafeZone solves this by combining **incident reporting**, **location-based alerts**, **notifications** and **role-based dashboards** in one application.
 
 ### What makes it unique
 
