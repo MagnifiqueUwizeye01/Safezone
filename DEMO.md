@@ -7,7 +7,6 @@
 [![Back to README](https://img.shields.io/badge/Back%20to%20README-1a4a3a?style=for-the-badge&logo=github&logoColor=white)](README.md)
 
 </div>
-
 <br/>
 
 ---
