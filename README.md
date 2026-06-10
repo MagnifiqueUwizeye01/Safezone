@@ -90,6 +90,48 @@ Each role sees a different part of the platform after logging in.
 
 ---
 
+## 𝚂𝚌𝚛𝚎𝚎𝚗𝚜𝚑𝚘𝚝𝚜
+
+A visual overview of SafeZone across public pages and role-based dashboards.
+
+### Public Pages
+
+**Landing Page** — The public home page introducing SafeZone's mission to connect citizens, police, and local authorities across Rwanda.
+
+<p align="center">
+  <img src="screenshots/landing-page.png" alt="SafeZone landing page" width="90%" />
+</p>
+
+**Login** — Secure sign-in for citizens, police, and administrators to access their role-based dashboards.
+
+<p align="center">
+  <img src="screenshots/login.png" alt="SafeZone login page" width="90%" />
+</p>
+
+### Role Dashboards
+
+**Citizen Dashboard** — Citizens track their submitted reports, view active safety alerts, and monitor pending and resolved incidents in their community.
+
+<p align="center">
+  <img src="screenshots/citizen-dashboard.png" alt="SafeZone citizen dashboard" width="90%" />
+</p>
+
+**Police Dashboard** — Police officers monitor incident reports, review resolution rates, and manage alerts across their assigned area.
+
+<p align="center">
+  <img src="screenshots/police-dashboard.png" alt="SafeZone police dashboard" width="90%" />
+</p>
+
+**Admin Dashboard** — Administrators view system-wide statistics including users, reports, alerts, locations, and analytics across the platform.
+
+<p align="center">
+  <img src="screenshots/admin-dashboard.png" alt="SafeZone admin dashboard" width="90%" />
+</p>
+
+<br/>
+
+---
+
 ## 𝙷𝚘𝚠 𝙸𝚝 𝚆𝚘𝚛𝚔𝚜
 
 ### Architecture
