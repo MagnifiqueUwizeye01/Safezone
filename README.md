@@ -11,22 +11,7 @@
 
 </div>
 
----
 
-## 📖 Table of Contents
-
-- [About](#-about)
-- [What It Does](#-what-it-does)
-- [Demo](#-demo)
-- [How It Works](#-how-it-works)
-- [Tech Stack](#-tech-stack)
-- [Getting Started](#-getting-started)
-- [Project Structure](#-project-structure)
-- [API Reference](#-api-reference)
-- [Database Schema](#-database-schema)
-- [Author](#-author)
-
----
 
 ## 📌 About
 
