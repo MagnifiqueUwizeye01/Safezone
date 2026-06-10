@@ -1,6 +1,6 @@
 <div align="center">
 
-
+<br/>
 
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)](https://spring.io/projects/spring-boot)
 [![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
@@ -45,8 +45,8 @@ SafeZone is a **monorepo** — one repository containing two applications:
 
 | Part | Folder | Purpose |
 |---|---|---|
-| **Frontend** | `frontend/` | React web app |
-| **Backend** | `backend/` | Spring Boot REST API |
+| **Frontend** | `frontend/` | React web app — what users see and interact with |
+| **Backend** | `backend/` | Spring Boot REST API — business logic and database access |
 
 The frontend talks to the backend over HTTP. The backend stores everything in **PostgreSQL** using JPA/Hibernate.
 
@@ -132,17 +132,13 @@ The API covers **seven core entities**:
 
 ---
 
-<div align="center">
-
 ## 𝚃𝚎𝚌𝚑 𝚂𝚝𝚊𝚌𝚔
 
 | Layer | Technologies |
-|:---:|---|
+|---|---|
 | **Frontend** | ![React](https://img.shields.io/badge/React%2019-61DAFB?style=flat-square&logo=react&logoColor=black) ![Vite](https://img.shields.io/badge/Vite%207-646CFF?style=flat-square&logo=vite&logoColor=white) ![TailwindCSS](https://img.shields.io/badge/Tailwind%20CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white) ![React Router](https://img.shields.io/badge/React%20Router-CA4245?style=flat-square&logo=react-router&logoColor=white) ![Axios](https://img.shields.io/badge/Axios-5A29E4?style=flat-square&logo=axios&logoColor=white) |
 | **Backend** | ![Java](https://img.shields.io/badge/Java%2017-ED8B00?style=flat-square&logo=openjdk&logoColor=white) ![Spring Boot](https://img.shields.io/badge/Spring%20Boot%203.5-6DB33F?style=flat-square&logo=springboot&logoColor=white) ![Spring JPA](https://img.shields.io/badge/Spring%20Data%20JPA-6DB33F?style=flat-square&logo=spring&logoColor=white) ![Maven](https://img.shields.io/badge/Maven-C71A36?style=flat-square&logo=apachemaven&logoColor=white) |
 | **Database** | ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white) |
-
-</div>
 
 <br/>
 
@@ -269,6 +265,9 @@ For the complete endpoint list with HTTP methods and query parameters, see [`bac
 
 **Magnifique Uwizeye**
 
+[![GitHub](https://img.shields.io/badge/GitHub-MagnifiqueUwizeye01-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/MagnifiqueUwizeye01)
+
+<br/>
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f2027,50:1a4a3a,100:2d8653&height=100&section=footer&animation=fadeIn" width="100%"/>
 
