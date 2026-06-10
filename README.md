@@ -1,8 +1,6 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f2027,50:1a4a3a,100:2d8653&height=200&section=header&text=SafeZone&fontSize=72&fontColor=ffffff&fontAlignY=38&desc=Smart%20Community%20Safety%20%26%20Incident%20Reporting%20Platform&descSize=18&descAlignY=60&descColor=a8d5b5&animation=fadeIn" width="100%"/>
 
-<br/>
 
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)](https://spring.io/projects/spring-boot)
 [![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
@@ -279,9 +277,6 @@ For the complete endpoint list with HTTP methods and query parameters, see [`bac
 
 **Magnifique Uwizeye**
 
-[![GitHub](https://img.shields.io/badge/GitHub-MagnifiqueUwizeye01-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/MagnifiqueUwizeye01)
-
-<br/>
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f2027,50:1a4a3a,100:2d8653&height=100&section=footer&animation=fadeIn" width="100%"/>
 
