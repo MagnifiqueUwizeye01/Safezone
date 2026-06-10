@@ -15,20 +15,35 @@
 
 ## About
 
-SafeZone is a full-stack web application that helps communities stay informed and respond to safety incidents faster. Citizens can report problems in their area, police can monitor and act on those reports, and administrators can manage the entire system from one place.
+SafeZone is a full-stack community safety platform built to connect **citizens**, **police officers**, and **administrators** around one shared goal — keeping communities informed and able to respond to safety incidents quickly.
 
-What makes SafeZone different is **location-aware design**. The platform is built around Rwanda's administrative structure — Province, District, Sector, Cell, and Village — so reports, alerts, and notifications always reach the people in the right area.
+Citizens can report security incidents in their area, police can monitor and act on those reports, and administrators can manage users, locations, alerts, emergency contacts, and system-wide analytics from one place.
+
+What makes SafeZone different is **location-aware design**. The platform is built around Rwanda's administrative structure:
+
+```
+Province → District → Sector → Cell → Village
+```
+
+Every report, alert, and notification is tied to this five-level hierarchy, so safety information reaches the people in the right area.
+
+On the **frontend**, users interact through role-based dashboards. Citizens manage their own reports and alerts; police handle incident monitoring and alert creation; admins have full control over the system.
+
+On the **backend**, a Spring Boot REST API exposes 56+ endpoints across seven resources — Users, User Profiles, Locations, Reports, Alerts, Notifications, and Emergency Contacts — all persisted in PostgreSQL through JPA/Hibernate.
+
+Together, the frontend and backend live in one **monorepo**, making the full SafeZone system easier to develop and maintain.
 
 ---
 
 ## What It Does
 
-- **Incident reporting** — Citizens submit reports (theft, violence, emergencies, and more) with status tracking from pending to resolved.
-- **Safety alerts** — Police and admins broadcast warnings or emergency notices to users based on location.
-- **Notifications** — Users receive updates on reports and alerts, with read/unread tracking.
-- **Emergency contacts** — Location-based directory of police, fire, medical, and other services.
-- **User management** — Role-based access for citizens, police, admins, and community leaders.
-- **Dashboards & analytics** — Role-specific views with stats, charts, and management tools.
+- **Incident reporting** — Citizens submit reports with types such as theft, violence, harassment, vandalism, suspicious activity, and emergencies. Each report moves through statuses: `PENDING`, `IN_PROGRESS`, `RESOLVED`, or `CANCELLED`.
+- **Safety alerts** — Police and admins create location-based alerts (`WARNING`, `EMERGENCY`, `INFO`, `SAFETY_ALERT`, `COMMUNITY_UPDATE`) targeted to users in the affected area.
+- **Notifications** — Users receive notifications linked to reports and alerts, with read/unread tracking and mark-all-read support.
+- **Emergency contacts** — A location-based directory of police, fire, medical, ambulance, and other emergency services.
+- **Location management** — Admins build and maintain the full Rwanda administrative hierarchy from province down to village.
+- **User management** — Role-based access for **Citizen**, **Police**, and **Admin** users, with profile management for each account.
+- **Dashboards & analytics** — Role-specific dashboards with statistics, charts, recent activity, and management tools.
 
 ---
 
@@ -58,9 +73,9 @@ https://github.com/user-attachments/assets/27bfed72-bd5a-43ab-afc2-9bb40444896c
 
 SafeZone is a **monorepo** with two applications that work together:
 
-1. **Frontend** (`frontend/`) — A React app where users log in, submit reports, view alerts, and manage their profile. Routes and pages are protected by role (Citizen, Police, Admin).
-2. **Backend** (`backend/`) — A Spring Boot REST API that handles business logic, stores data in PostgreSQL, and exposes endpoints for users, reports, alerts, locations, notifications, and more.
-3. **Database** — PostgreSQL stores seven core entities (User, UserProfile, Location, Report, Alert, Notification, EmergencyContact) connected through JPA/Hibernate.
+1. **Frontend** (`frontend/`) — A React + Vite application with public pages (Home, About, Features, Contact), authentication pages (Login, Register, Forgot Password, OTP, 2FA), and protected role-based routes for Admin, Police, and Citizen dashboards.
+2. **Backend** (`backend/`) — A Spring Boot REST API organized into controllers, services, repositories, models, and enums. It handles all business logic and data persistence.
+3. **Database** — PostgreSQL stores seven core entities: `User`, `UserProfile`, `Location`, `Report`, `Alert`, `Notification`, and `EmergencyContact`.
 
 When a citizen submits a report, the frontend sends a request to the API, the service layer validates and saves it, and relevant users can receive notifications. Alerts work the same way — created by police or admins and targeted to users in the affected location.
 
@@ -70,8 +85,8 @@ When a citizen submits a report, the frontend sends a request to the API, the se
 
 | Layer | Technologies |
 |-------|--------------|
-| Frontend | React 19, Vite, Tailwind CSS, React Router, Axios |
-| Backend | Java 17, Spring Boot 3.5, Spring Data JPA |
+| Frontend | React 19, Vite 7, Tailwind CSS, React Router, Axios, Lucide React |
+| Backend | Java 17, Spring Boot 3.5.6, Spring Data JPA, Maven |
 | Database | PostgreSQL |
 
 ---
@@ -87,16 +102,56 @@ Java 17, Node.js 18+, PostgreSQL 13+, and Git.
 ```bash
 git clone https://github.com/MagnifiqueUwizeye01/Safezone.git
 cd Safezone
+```
 
-2. Set up the database
+### 2. Set up the database
+
+```sql
 CREATE DATABASE safezone_db;
+```
 
-Update credentials in backend/src/main/resources/application.properties:
+Update credentials in `backend/src/main/resources/application.properties`:
+
+```properties
 spring.datasource.url=jdbc:postgresql://localhost:5432/safezone_db
 spring.datasource.username=YOUR_USERNAME
 spring.datasource.password=YOUR_PASSWORD
+```
+
+### 3. Run the backend
+
+```bash
+cd backend
+./mvnw spring-boot:run        # macOS / Linux
+mvnw.cmd spring-boot:run      # Windows
+```
+
+API runs at **http://localhost:8080**
+
+### 4. Run the frontend
+
+```bash
+cd frontend
+npm install
+```
+
+Create `frontend/.env`:
+
+```env
+VITE_API_BASE_URL=http://localhost:8080
+```
+
+```bash
+npm run dev
+```
+
+App runs at **http://localhost:5173**
+
+---
 
 ## Project Structure
+
+```
 Safezone/
 ├── backend/          # Spring Boot API
 │   └── src/main/java/com/magnifique/safezone/
@@ -111,20 +166,36 @@ Safezone/
 │       ├── components/
 │       ├── api/
 │       └── routes/
+├── videos/           # Demo walkthrough videos
 └── README.md
+```
 
-API Reference
-The backend exposes 56+ REST endpoints. For the full list, see backend/README.md.
+---
 
-Base URL: http://localhost:8080
+## API Reference
 
-Database Schema
-<p align="center"> <img src="https://github.com/user-attachments/assets/4027c998-2693-463d-863c-cce5a0e4854e" alt="SafeZone ER Diagram" width="80%" /> </p>
+The backend exposes 56+ REST endpoints. For the full list, see [`backend/README.md`](backend/README.md).
 
+**Base URL:** `http://localhost:8080`
 
-Author
-Magnifique Uwizeye
+---
 
+## Database Schema
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/4027c998-2693-463d-863c-cce5a0e4854e" alt="SafeZone ER Diagram" width="80%" />
+</p>
 
+---
 
+## Author
+
+**Magnifique Uwizeye**
+
+---
+
+<div align="center">
+
+If you find this project useful, consider giving it a star.
+
+</div>
