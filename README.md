@@ -15,29 +15,46 @@
 
 <br/>
 
+[About](#about) · [Features](#what-it-does) · [User Roles](#user-roles) · [How It Works](#how-it-works) · [Getting Started](#getting-started) · [Demo](DEMO.md)
+
 </div>
 
 ---
 
 ## About
 
-SafeZone is a full-stack community safety platform built to connect **citizens**, **police officers**, and **administrators** around one shared goal — keeping communities informed and able to respond to safety incidents quickly.
+**SafeZone** is a full-stack community safety platform that helps people report security incidents, respond to them faster, and stay informed about safety in their area.
 
-Citizens can report security incidents in their area, police can monitor and act on those reports, and administrators can manage users, locations, alerts, emergency contacts, and system-wide analytics from one place.
+The platform brings three groups together:
 
-What makes SafeZone different is **location-aware design**. The platform is built around Rwanda's administrative structure:
+- **Citizens** who report what they see and receive safety alerts
+- **Police officers** who monitor incidents and broadcast warnings
+- **Administrators** who manage the entire system
+
+### The problem it solves
+
+Communities often lack a single place to report incidents, alert nearby residents, and coordinate with local authorities. SafeZone solves this by combining **incident reporting**, **location-based alerts**, **notifications**, and **role-based dashboards** in one application.
+
+### What makes it unique
+
+SafeZone is built around **Rwanda's administrative geography**. Every user, report, and alert is connected to a real location in this hierarchy:
 
 ```
 Province → District → Sector → Cell → Village
 ```
 
-Every report, alert, and notification is tied to this five-level hierarchy, so safety information reaches the people in the right area.
+This means a report filed in one village does not get lost in a generic inbox — it is tied to the correct area, and alerts can reach the people who actually live there.
 
-On the **frontend**, users interact through role-based dashboards. Citizens manage their own reports and alerts; police handle incident monitoring and alert creation; admins have full control over the system.
+### How the system is organized
 
-On the **backend**, a Spring Boot REST API exposes 56+ endpoints across seven resources — Users, User Profiles, Locations, Reports, Alerts, Notifications, and Emergency Contacts — all persisted in PostgreSQL through JPA/Hibernate.
+SafeZone is a **monorepo** — one repository containing two applications:
 
-Together, the frontend and backend live in one **monorepo**, making the full SafeZone system easier to develop and maintain.
+| Part | Folder | Purpose |
+|---|---|---|
+| **Frontend** | `frontend/` | React web app — what users see and interact with |
+| **Backend** | `backend/` | Spring Boot REST API — business logic and database access |
+
+The frontend talks to the backend over HTTP. The backend stores everything in **PostgreSQL** using JPA/Hibernate.
 
 ---
 
@@ -55,41 +72,57 @@ Together, the frontend and backend live in one **monorepo**, making the full Saf
 
 ---
 
-## Demo
+## User Roles
 
-See SafeZone in action through walkthrough videos for each user role.
+Each role sees a different part of the platform after logging in.
 
-<br/>
-
-**Citizen** — Submit incident reports, view location-based safety alerts, browse emergency contacts, and manage your profile and notifications.
-
-<video src="https://github.com/user-attachments/assets/27bfed72-bd5a-43ab-afc2-9bb40444896c" autoplay muted loop controls width="100%"></video>
-
-<br/>
-
-**Police** — Monitor incident reports, create and manage location-based alerts, review incident analytics, and access emergency contacts from the police dashboard.
-
-<video src="https://github.com/user-attachments/assets/cdab2d22-6ef1-49cb-8e80-c608fdd31c3f" autoplay muted loop controls width="100%"></video>
-
-<br/>
-
-**Admin** — Manage users, locations, reports, and alerts, oversee emergency contacts, and view system-wide analytics from the admin dashboard.
-
-<video src="https://github.com/user-attachments/assets/c4f12de7-ec92-412c-931d-580decc9f5b5" autoplay muted loop controls width="100%"></video>
-
-<br/>
+| Role | What they do |
+|---|---|
+| **Citizen** | Submit and track incident reports, view regional safety alerts, browse emergency contacts, manage profile and notifications |
+| **Police** | Monitor all reports, update report status, create and manage location-based alerts, view incident analytics |
+| **Admin** | Full system control — manage users, locations, reports, alerts, emergency contacts, analytics, and system settings |
 
 ---
 
 ## How It Works
 
-SafeZone is a **monorepo** with two applications that work together:
+### Architecture
 
-1. **Frontend** (`frontend/`) — A React + Vite application with public pages (Home, About, Features, Contact), authentication pages (Login, Register, Forgot Password, OTP, 2FA), and protected role-based routes for Admin, Police, and Citizen dashboards.
-2. **Backend** (`backend/`) — A Spring Boot REST API organized into controllers, services, repositories, models, and enums. It handles all business logic and data persistence.
-3. **Database** — PostgreSQL stores seven core entities: `User`, `UserProfile`, `Location`, `Report`, `Alert`, `Notification`, and `EmergencyContact`.
+```
+User (Browser)
+      ↓
+React Frontend  →  Axios HTTP requests  →  Spring Boot API  →  PostgreSQL
+```
 
-When a citizen submits a report, the frontend sends a request to the API, the service layer validates and saves it, and relevant users can receive notifications. Alerts work the same way — created by police or admins and targeted to users in the affected location.
+### Step-by-step flow
+
+1. A user opens the React app and logs in with their role (Citizen, Police, or Admin).
+2. The frontend sends API requests to the Spring Boot backend (`http://localhost:8080`).
+3. The backend processes the request through its **controller → service → repository** layers.
+4. Data is saved to or read from PostgreSQL.
+5. The response is sent back to the frontend and displayed in the user's dashboard.
+
+### Example: submitting a report
+
+1. A **citizen** fills out a report form on the frontend.
+2. The frontend sends a `POST /report` request to the backend.
+3. The backend saves the report with its location and status (`PENDING`).
+4. Relevant users may receive a **notification** about the new report.
+5. A **police officer** sees the report on their dashboard and updates its status.
+
+### Backend resources
+
+The API covers **seven core entities**:
+
+| Entity | Purpose |
+|---|---|
+| `User` | Platform accounts with roles and location |
+| `UserProfile` | Extended profile info (one-to-one with User) |
+| `Location` | Rwanda administrative hierarchy |
+| `Report` | Citizen-submitted incident reports |
+| `Alert` | Location-based safety alerts |
+| `Notification` | User notifications for reports and alerts |
+| `EmergencyContact` | Emergency service contacts per location |
 
 ---
 
@@ -165,20 +198,21 @@ npm run dev
 
 ```
 Safezone/
-├── backend/          # Spring Boot API
+├── backend/          # Spring Boot REST API
 │   └── src/main/java/com/magnifique/safezone/
-│       ├── controller/
-│       ├── service/
-│       ├── repository/
-│       ├── model/
-│       └── enums/
-├── frontend/         # React application
+│       ├── controller/   # REST endpoints
+│       ├── service/        # Business logic
+│       ├── repository/     # Database access
+│       ├── model/          # JPA entities
+│       └── enums/          # Domain types
+├── frontend/         # React web application
 │   └── src/
 │       ├── pages/        # Admin, Police, Citizen, Public
-│       ├── components/
-│       ├── api/
-│       └── routes/
-├── videos/           # Demo walkthrough videos
+│       ├── components/   # Reusable UI
+│       ├── api/            # HTTP services
+│       └── routes/         # Route protection
+├── videos/           # Demo video files
+├── DEMO.md           # Role-based walkthrough videos
 └── README.md
 ```
 
@@ -186,7 +220,9 @@ Safezone/
 
 ## API Reference
 
-The backend exposes 56+ REST endpoints. For the full list, see [`backend/README.md`](backend/README.md).
+The backend exposes **56+ REST endpoints** across all seven resources.
+
+For the complete endpoint list with HTTP methods and query parameters, see [`backend/README.md`](backend/README.md).
 
 **Base URL:** `http://localhost:8080`
 
@@ -197,6 +233,16 @@ The backend exposes 56+ REST endpoints. For the full list, see [`backend/README.
 <p align="center">
   <img src="https://github.com/user-attachments/assets/4027c998-2693-463d-863c-cce5a0e4854e" alt="SafeZone ER Diagram" width="80%" />
 </p>
+
+The system uses seven entities with relationships mapped through JPA/Hibernate, supporting Rwanda's full location hierarchy.
+
+---
+
+## Demo
+
+Watch role-based walkthrough videos showing the Citizen, Police, and Admin dashboards in action.
+
+**→ [View Demo Videos](DEMO.md)**
 
 ---
 
