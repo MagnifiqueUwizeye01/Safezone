@@ -2,7 +2,7 @@
 
 # SafeZone
 
-### A community safety platform for incident reporting and location-based alerts
+**Smart Community Safety & Incident Reporting Platform**
 
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5-6DB33F?logo=springboot&logoColor=white)](https://spring.io/projects/spring-boot)
 [![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)](https://react.dev/)
@@ -49,21 +49,23 @@ Together, the frontend and backend live in one **monorepo**, making the full Saf
 
 ## Demo
 
-Explore the core workflows of SafeZone through these interactive walkthroughs:
+See SafeZone in action through walkthrough videos for each user role.
 
-### Platform Overview & Authentication
-See how users navigate the login flow and access role-based dashboards.
+### Citizen Demo
 
-https://github.com/user-attachments/assets/27bfed72-bd5a-43ab-afc2-9bb40444896c
-
-
-### Incident Reporting Flow
-Watch a citizen submit a new safety report and track its status in real-time.
+Submit incident reports, view location-based safety alerts, browse emergency contacts, and manage your profile and notifications.
 
 https://github.com/user-attachments/assets/c4f12de7-ec92-412c-931d-580decc9f5b5
 
-### Admin & Analytics Dashboard
-Experience the administrative panel where system-wide analytics and user management are handled.
+### Police Demo
+
+Monitor incident reports, create and manage location-based alerts, review incident analytics, and access emergency contacts from the police dashboard.
+
+https://github.com/user-attachments/assets/cdab2d22-6ef1-49cb-8e80-c608fdd31c3f
+
+### Admin Demo
+
+Manage users, locations, reports, and alerts, oversee emergency contacts, and view system-wide analytics from the admin dashboard.
 
 https://github.com/user-attachments/assets/27bfed72-bd5a-43ab-afc2-9bb40444896c
 
