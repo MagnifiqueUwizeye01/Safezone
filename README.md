@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🛡️ SafeZone
+# SafeZone
 
 ### A community safety platform for incident reporting and location-based alerts
 
@@ -13,7 +13,7 @@
 
 
 
-## 📌 About
+## About
 
 SafeZone is a full-stack web application that helps communities stay informed and respond to safety incidents faster. Citizens can report problems in their area, police can monitor and act on those reports, and administrators can manage the entire system from one place.
 
@@ -21,7 +21,7 @@ What makes SafeZone different is **location-aware design**. The platform is buil
 
 ---
 
-## ✨ What It Does
+## What It Does
 
 - **Incident reporting** — Citizens submit reports (theft, violence, emergencies, and more) with status tracking from pending to resolved.
 - **Safety alerts** — Police and admins broadcast warnings or emergency notices to users based on location.
@@ -32,29 +32,29 @@ What makes SafeZone different is **location-aware design**. The platform is buil
 
 ---
 
-## 🎥 Demo
+## Demo
 
 Explore the core workflows of SafeZone through these interactive walkthroughs:
 
-### 🚀 Platform Overview & Authentication
+### Platform Overview & Authentication
 See how users navigate the login flow and access role-based dashboards.
 
 https://github.com/user-attachments/assets/27bfed72-bd5a-43ab-afc2-9bb40444896c
 
 
-### 📝 Incident Reporting Flow
+### Incident Reporting Flow
 Watch a citizen submit a new safety report and track its status in real-time.
 
 https://github.com/user-attachments/assets/c4f12de7-ec92-412c-931d-580decc9f5b5
 
-### 📊 Admin & Analytics Dashboard
+### Admin & Analytics Dashboard
 Experience the administrative panel where system-wide analytics and user management are handled.
 
 https://github.com/user-attachments/assets/27bfed72-bd5a-43ab-afc2-9bb40444896c
 
 ---
 
-## ⚙️ How It Works
+## How It Works
 
 SafeZone is a **monorepo** with two applications that work together:
 
@@ -66,7 +66,7 @@ When a citizen submits a report, the frontend sends a request to the API, the se
 
 ---
 
-## 🧰 Tech Stack
+## Tech Stack
 
 | Layer | Technologies |
 |-------|--------------|
@@ -76,7 +76,7 @@ When a citizen submits a report, the frontend sends a request to the API, the se
 
 ---
 
-## 🚦 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -113,18 +113,18 @@ Safezone/
 │       └── routes/
 └── README.md
 
-📡 API Reference
+API Reference
 The backend exposes 56+ REST endpoints. For the full list, see backend/README.md.
 
 Base URL: http://localhost:8080
 
-🗄️ Database Schema
+Database Schema
 <p align="center"> <img src="https://github.com/user-attachments/assets/4027c998-2693-463d-863c-cce5a0e4854e" alt="SafeZone ER Diagram" width="80%" /> </p>
 
 
-👤 Author
+Author
 Magnifique Uwizeye
 
 
-Update credentials in backend/src/main/resources/application.properties:
+
 
