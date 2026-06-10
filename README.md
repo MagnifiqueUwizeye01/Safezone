@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f2027,50:1a4a3a,100:2d8653&height=200&section=header&text=SafeZone&fontSize=72&fontColor=ffffff&fontAlignY=38&desc=Smart%20Community%20Safety%20%26%20Incident%20Reporting%20Platform&descSize=18&descAlignY=60&descColor=a8d5b5&animation=fadeIn" width="100%"/>
+
 <br/>
 
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)](https://spring.io/projects/spring-boot)
@@ -8,6 +10,15 @@
 [![Vite](https://img.shields.io/badge/Vite-7-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vite.dev/)
 [![Java](https://img.shields.io/badge/Java-17-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](https://openjdk.org/)
 [![Maven](https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white)](https://maven.apache.org/)
+
+<br/>
+
+[![About](https://img.shields.io/badge/About-1a4a3a?style=flat-square)](#about)
+[![Features](https://img.shields.io/badge/Features-1a4a3a?style=flat-square)](#what-it-does)
+[![User Roles](https://img.shields.io/badge/User%20Roles-1a4a3a?style=flat-square)](#user-roles)
+[![Screenshots](https://img.shields.io/badge/Screenshots-1a4a3a?style=flat-square)](#screenshots)
+[![How It Works](https://img.shields.io/badge/How%20It%20Works-1a4a3a?style=flat-square)](#how-it-works)
+[![Getting Started](https://img.shields.io/badge/Getting%20Started-1a4a3a?style=flat-square)](#getting-started)
 
 </div>
 
@@ -25,11 +36,9 @@ The platform brings three groups together:
 - **Police officers** who monitor incidents and broadcast warnings
 - **Administrators** who manage the entire system
 
-
 ### The problem it solves
 
 Communities often lack a single place to report incidents, alert nearby residents, and coordinate with local authorities. SafeZone solves this by combining **incident reporting**, **location-based alerts**, **notifications**, and **role-based dashboards** in one application.
-
 
 ### What makes it unique
 
@@ -96,37 +105,64 @@ A visual overview of SafeZone across public pages and role-based dashboards.
 
 ### Public Pages
 
-**Landing Page** — The public home page introducing SafeZone's mission to connect citizens, police, and local authorities across Rwanda.
+<table width="100%">
+<tr>
+<td width="50%" align="center" valign="top">
 
-<p align="center">
-  <img src="screenshots/landing-page.png" alt="SafeZone landing page" width="90%" />
-</p>
+**Landing Page**
 
-**Login** — Secure sign-in for citizens, police, and administrators to access their role-based dashboards.
+<img src="screenshots/landing-page.png" alt="SafeZone landing page" width="100%" />
 
-<p align="center">
-  <img src="screenshots/login.png" alt="SafeZone login page" width="90%" />
-</p>
+<sub>The public home page introducing SafeZone's mission to connect citizens, police, and local authorities across Rwanda.</sub>
+
+</td>
+<td width="50%" align="center" valign="top">
+
+**Login**
+
+<img src="screenshots/login.png" alt="SafeZone login page" width="100%" />
+
+<sub>Secure sign-in for citizens, police, and administrators to access their role-based dashboards.</sub>
+
+</td>
+</tr>
+</table>
 
 ### Role Dashboards
 
-**Citizen Dashboard** — Citizens track their submitted reports, view active safety alerts, and monitor pending and resolved incidents in their community.
+<table width="100%">
+<tr>
+<td width="50%" align="center" valign="top">
 
-<p align="center">
-  <img src="screenshots/citizen-dashboard.png" alt="SafeZone citizen dashboard" width="90%" />
-</p>
+**Citizen Dashboard**
 
-**Police Dashboard** — Police officers monitor incident reports, review resolution rates, and manage alerts across their assigned area.
+<img src="screenshots/citizen-dashboard.png" alt="SafeZone citizen dashboard" width="100%" />
 
-<p align="center">
-  <img src="screenshots/police-dashboard.png" alt="SafeZone police dashboard" width="90%" />
-</p>
+<sub>Citizens track their submitted reports, view active safety alerts, and monitor pending and resolved incidents in their community.</sub>
 
-**Admin Dashboard** — Administrators view system-wide statistics including users, reports, alerts, locations, and analytics across the platform.
+</td>
+<td width="50%" align="center" valign="top">
 
-<p align="center">
-  <img src="screenshots/admin-dashboard.png" alt="SafeZone admin dashboard" width="90%" />
-</p>
+**Police Dashboard**
+
+<img src="screenshots/police-dashboard.png" alt="SafeZone police dashboard" width="100%" />
+
+<sub>Police officers monitor incident reports, review resolution rates, and manage alerts across their assigned area.</sub>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" align="center" valign="top">
+
+**Admin Dashboard**
+
+<img src="screenshots/admin-dashboard.png" alt="SafeZone admin dashboard" width="100%" />
+
+<sub>Administrators view system-wide statistics including users, reports, alerts, locations, and analytics across the platform.</sub>
+
+</td>
+</tr>
+</table>
 
 <br/>
 
@@ -293,7 +329,7 @@ For the complete endpoint list with HTTP methods and query parameters, see [`bac
 
 ## 𝙳𝚊𝚝𝚊𝚋𝚊𝚜𝚎 𝚂𝚌𝚑𝚎𝚖𝚊
 
-<img src="https://github.com/user-attachments/assets/4027c998-2693-463d-863c-cce5a0e4854e" alt="SafeZone ER Diagram" width="85%" /> 
+<img src="https://github.com/user-attachments/assets/4027c998-2693-463d-863c-cce5a0e4854e" alt="SafeZone ER Diagram" width="85%" />
 
 <sub>The system uses seven entities with relationships mapped through JPA/Hibernate, supporting Rwanda's full location hierarchy.</sub>
 
@@ -309,6 +345,9 @@ For the complete endpoint list with HTTP methods and query parameters, see [`bac
 
 **Magnifique Uwizeye**
 
+[![GitHub](https://img.shields.io/badge/GitHub-MagnifiqueUwizeye01-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/MagnifiqueUwizeye01)
+
+<br/>
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f2027,50:1a4a3a,100:2d8653&height=100&section=footer&animation=fadeIn" width="100%"/>
 
