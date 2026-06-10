@@ -251,7 +251,7 @@ For the complete endpoint list with HTTP methods and query parameters, see [`bac
 
 ## 𝙳𝚊𝚝𝚊𝚋𝚊𝚜𝚎 𝚂𝚌𝚑𝚎𝚖𝚊
 
-<img src="https://github.com/user-attachments/assets/4027c998-2693-463d-863c-cce5a0e4854e" alt="SafeZone ER Diagram" width="85%" />
+<img src="https://github.com/user-attachments/assets/4027c998-2693-463d-863c-cce5a0e4854e" alt="SafeZone ER Diagram" width="85%" /> 
 
 <sub>The system uses seven entities with relationships mapped through JPA/Hibernate, supporting Rwanda's full location hierarchy.</sub>
 
