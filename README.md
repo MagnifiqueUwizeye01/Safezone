@@ -143,9 +143,10 @@ The API covers **seven core entities**:
 
 ---
 
+<div align="center">
+
 ## Tech Stack
 
-<div align="center">
 
 | Layer | Technologies |
 |:---:|---|
@@ -262,20 +263,25 @@ For the complete endpoint list with HTTP methods and query parameters, see [`bac
 
 ## Database Schema
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/4027c998-2693-463d-863c-cce5a0e4854e" alt="SafeZone ER Diagram" width="85%" />
-</p>
+<div align="center">
 
-<p align="center"><sub>The system uses seven entities with relationships mapped through JPA/Hibernate, supporting Rwanda's full location hierarchy.</sub></p>
+## Database Schema
+
+<img src="https://github.com/user-attachments/assets/4027c998-2693-463d-863c-cce5a0e4854e" alt="SafeZone ER Diagram" width="85%" />
+
+<sub>The system uses seven entities with relationships mapped through JPA/Hibernate, supporting Rwanda's full location hierarchy.</sub>
+
+</div>
 
 <br/>
 
 ---
 
 
+<div align="center">
+
 ## Author
 
-<div align="center">
 
 **Magnifique Uwizeye**
 
