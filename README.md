@@ -4,7 +4,7 @@
 
 # SafeZone 
 
-**Smart Community Safety & Incident Reporting Platform**
+**Smart Community Safety & Incident Reporting Platform** 
 
 <br/>
 
