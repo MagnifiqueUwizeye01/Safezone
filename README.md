@@ -7,17 +7,7 @@
 [![Java](https://img.shields.io/badge/Java-17-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](https://openjdk.org/)
 [![Maven](https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white)](https://maven.apache.org/)
 
-<br/>
-
-[![About](https://img.shields.io/badge/About-1a4a3a?style=flat-square)](#about)
-[![Features](https://img.shields.io/badge/Features-1a4a3a?style=flat-square)](#what-it-does)
-[![User Roles](https://img.shields.io/badge/User%20Roles-1a4a3a?style=flat-square)](#user-roles)
-[![Screenshots](https://img.shields.io/badge/Screenshots-1a4a3a?style=flat-square)](#screenshots)
-[![How It Works](https://img.shields.io/badge/How%20It%20Works-1a4a3a?style=flat-square)](#how-it-works)
-[![Getting Started](https://img.shields.io/badge/Getting%20Started-1a4a3a?style=flat-square)](#getting-started)
-
 </div>
-
 <br/>
 
 ---
