@@ -30,19 +30,19 @@ What makes SafeZone different is **location-aware design**. The platform is buil
 
 ## Demo
 
-Walkthroughs for each user role in the platform.
+Walkthroughs for each user role. **Click a preview to watch the full video.**
 
 ### Admin
 
-<video src="https://github.com/MagnifiqueUwizeye01/Safezone/raw/main/videos/admin-demo.mp4" controls width="100%"></video>
+[![Admin demo — click to watch](videos/admin-demo-thumb.jpg)](https://github.com/MagnifiqueUwizeye01/Safezone/blob/main/videos/admin-demo.mp4)
 
 ### Police
 
-<video src="https://github.com/MagnifiqueUwizeye01/Safezone/raw/main/videos/police-demo.mp4" controls width="100%"></video>
+[![Police demo — click to watch](videos/police-demo-thumb.jpg)](https://github.com/MagnifiqueUwizeye01/Safezone/blob/main/videos/police-demo.mp4)
 
 ### Citizen
 
-<video src="https://github.com/MagnifiqueUwizeye01/Safezone/raw/main/videos/citizen-demo.mp4" controls width="100%"></video>
+[![Citizen demo — click to watch](videos/citizen-demo-thumb.jpg)](https://github.com/MagnifiqueUwizeye01/Safezone/blob/main/videos/citizen-demo.mp4)
 
 ## How It Works
 
